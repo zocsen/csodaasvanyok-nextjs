@@ -1,0 +1,125 @@
+.product-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  img {
+    width: 111%;
+    height: auto;
+    margin-left: -15px;
+  }
+
+  .product-details {
+    display: flex;
+    flex-direction: column;
+    .product-name {
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+
+    .product-price {
+      font-size: 2.4rem;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    .product-description {
+      margin-bottom: 40px;
+      .description-header {
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 34px;
+      }
+    }
+
+    .product-size-wrapper {
+      max-width: 290px;
+      .size-title {
+        margin-bottom: 10px;
+      }
+      .size-boxes {
+        display: flex;
+        justify-content: space-between;
+
+        .size-box {
+          border-radius: var(--border-radius-md);
+          min-width: 40px;
+          padding: 10px;
+          border-width: 2px;
+          font-weight: 700;
+          font-size: 1.4rem;
+          &.selected {
+            background-color: var(--primary-font-color);
+            color: var(--primary-background-color);
+          }
+        }
+      }
+    }
+
+    .add-to-cart-button {
+      padding: 15px 30px;
+      border-radius: var(--border-radius-button);
+      border-width: 2px;
+      font-size: 2rem;
+      font-weight: 500;
+      width: 100%;
+      // max-width: 350px;
+      margin: 40px 0 40px;
+      background-color: var(--primary-font-color);
+      color: var(--primary-background-color);
+
+      &.disabled {
+        background-color: var(--secondary-background-color);
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .product-page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+
+    img {
+      width: 100%;
+      margin-left: 0;
+      border-radius: var(--border-radius-sm);
+    }
+    .product-details .add-to-cart-button {
+      max-width: 200px;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .product-page {
+    gap: 80px;
+    .product-details {
+      .product-name {
+        font-size: 3.2rem;
+      }
+      .product-price {
+        font-size: 2rem;
+      }
+      .product-description {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .product-page {
+    gap: 120px;
+    .product-details {
+      .product-name {
+        font-size: 3.6rem;
+      }
+      .product-price {
+        font-size: 2.2rem;
+      }
+      .product-description {
+        font-size: 2.2rem;
+      }
+    }
+  }
+}

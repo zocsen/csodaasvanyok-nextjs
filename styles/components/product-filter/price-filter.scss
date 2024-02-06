@@ -1,0 +1,23 @@
+.filter-block {
+  .panel {
+    .min-max {
+      display: flex;
+      justify-content: space-between;
+      .price-box {
+        background-color: var(--primary-button-color);
+        padding: 7px 14px;
+        border-radius: var(--border-radius-md);
+
+        label {
+          font-size: 1.4rem;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .price-slider {
+      display: block;
+      margin: 16px;
+    }
+  }
+}

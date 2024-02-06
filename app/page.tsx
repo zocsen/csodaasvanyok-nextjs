@@ -1,95 +1,69 @@
+import "./homepage.scss";
 import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import HomepageBracelets from "../public/images/homepage-bracelets.webp";
+import HomepageMinerals from "../public/images/homepage-minerals.webp";
+import HomepageWinter from "../public/images/homepage-winter.webp";
+import HomepageLove from "../public/images/homepage-love.webp";
 
-export default function Home() {
+export const runtime = "edge";
+
+export const metadata = {
+  description:
+    "CsodaÁsványok Webárúház - Eredeti ásványokból készült karkötők, nyakláncok, fülbevalók, apróságok, marokkövek",
+  openGraph: {
+    type: "website",
+  },
+};
+
+export default function Homepage() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
+    <div className="homepage">
+      <h1 className="homepage-main-title">
+        Mi hiszünk az ásványok <br /> természetes erejében!
+      </h1>
+      <div className="homepage-image-links">
+        <Link className="image-container" href="/termekek/osszes-karkoto">
+          <Image
+            className="collection-image"
+            src={HomepageBracelets}
+            alt="Bracelets Showcase"
+            width={500}
+            height={500}
+          />
+          <h2 className="collection-name">Karkötők</h2>
+        </Link>
+        <Link className="image-container" href="/termekek/marokkovek">
+          <Image
+            className="collection-image"
+            src={HomepageMinerals}
+            alt="Minerals Showcase"
+            width={500}
+            height={500}
+          />
+          <h2 className="collection-name">Marokkövek</h2>
+        </Link>
+        <Link className="image-container" href="/termekek/teli-termekek">
+          <Image
+            className="collection-image"
+            src={HomepageWinter}
+            alt="Winter Bracelets Showcase"
+            width={500}
+            height={500}
+          />
+          <h2 className="collection-name">Téli varázs</h2>
+        </Link>
+        <Link className="image-container" href="/termekek/szerelmes-termekek">
+          <Image
+            className="collection-image"
+            src={HomepageLove}
+            alt="Love Showcase"
+            width={500}
+            height={500}
+          />
+          <h2 className="collection-name">Szerelem</h2>
+        </Link>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
   );
 }
