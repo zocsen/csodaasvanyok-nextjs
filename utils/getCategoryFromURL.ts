@@ -1,4 +1,4 @@
-const getCategoryFromURL = (url: string) => {
+const getCategoryFromURL = (url: string): string => {
   const categoryMap = {
     karkoto: "Karkötő",
     nyaklanc: "Nyaklánc",

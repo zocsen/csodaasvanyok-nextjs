@@ -18,7 +18,9 @@ export default function getSubcategoryFromURL(pathname: string) {
       return "Horoszkóp";
     case "akcios-termekek":
       return "Akció";
-    default:
-      return "";
+    case "marokkovek":
+      return "Marokkő";
+    default: 
+      return ""; // All products
   }
 }

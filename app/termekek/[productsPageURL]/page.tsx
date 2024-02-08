@@ -5,9 +5,9 @@ import getSubcategoryFromURL from "../../../utils/getSubcategoryFromURL";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-async function getProducts(categories: string, subcategories: string) {
+async function getProducts(category: string, subcategories: string) {
   const res = await fetch(
-    `${API_URL}/products/?categories=${categories}&subcategories=${subcategories}`,
+    `${API_URL}/products/?category=${category}&subcategories=${subcategories}`,
     {
       cache: "force-cache",
     }
@@ -27,9 +27,9 @@ export default async function ProductsPage({
   params: { productsPageURL: string };
 }) {
   const productsPageURL = params.productsPageURL;
-  const categories = getCategoryFromURL(productsPageURL);
+  const category = getCategoryFromURL(productsPageURL);
   const subcategories = getSubcategoryFromURL(productsPageURL);
-  const fetchedProducts = await getProducts(categories, subcategories);
+  const fetchedProducts = await getProducts(category, subcategories);
 
   return (
     <div>
