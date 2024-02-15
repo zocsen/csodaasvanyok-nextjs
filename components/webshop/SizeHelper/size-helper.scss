@@ -1,0 +1,23 @@
+.close-size-helper {
+  padding: 10px 0;
+  width: 100%;
+  border-width: 2px;
+  font-size: 2rem;
+  border-radius: var(--border-radius-md);
+  background-color: var(--primary-font-color);
+  color: var(--primary-background-color);
+  font-weight: 400;
+}
+
+.size-helper-content {
+  font-family: var(--secondary-font-family);
+  line-height: var(--base-line-height);
+  p {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+}

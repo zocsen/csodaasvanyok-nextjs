@@ -56,6 +56,7 @@ body {
   font-size: 1.8rem;
   max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
 }
 
 a {
@@ -224,23 +225,28 @@ li {
 
 .App {
   display: flex;
+  width: 100%;
   flex-direction: column;
   min-height: 100vh; // full viewport height
 }
 
+.main {
+  width: 100%;
+}
+
 @media (min-width: 0px) {
   .App {
-    margin: 0 15px;
+    padding: 0 15px;
   }
 }
 
 @media (min-width: 425px) {
   .App {
-    margin: 0 15px;
+    padding: 0 15px;
   }
 }
 @media (min-width: 768px) {
   .App {
-    margin: 0 30px;
+    padding: 0 30px;
   }
 }

@@ -1,0 +1,23 @@
+.product-size-wrapper {
+  max-width: 290px;
+  .size-title {
+    margin-bottom: 10px;
+  }
+  .size-boxes {
+    display: flex;
+    justify-content: space-between;
+
+    .size-box {
+      border-radius: var(--border-radius-md);
+      min-width: 40px;
+      padding: 10px;
+      border-width: 2px;
+      font-weight: 700;
+      font-size: 1.4rem;
+      &.selected {
+        background-color: var(--primary-font-color);
+        color: var(--primary-background-color);
+      }
+    }
+  }
+}

@@ -10,17 +10,19 @@ export default function getSubcategoryFromURL(pathname: string) {
       return "Férfi,Páros";
     case "paros-karkotok":
       return "Páros";
-    case "teli-termekek":
+    case "natural-karkotok":
+      return "Natural";
+    case "tel":
       return "Tél";
-    case "szerelmes-termekek":
+    case "szerelem":
       return "Szerelem";
-    case "horoszkop-termekek":
+    case "horoszkop":
       return "Horoszkóp";
-    case "akcios-termekek":
+    case "akcio":
       return "Akció";
     case "marokkovek":
       return "Marokkő";
-    default: 
+    default:
       return ""; // All products
   }
 }

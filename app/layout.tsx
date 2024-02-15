@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.scss";
 import { Suspense } from "react";
+import ClientSideContextProvider from "@/hooks/ClientSideContextProvider";
+import Header from "@/components/webshop/Header/Header";
 
 export const metadata: Metadata = {
   title: "Csodaásványok",
@@ -14,11 +16,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="App" lang="hu">
-      <body>
-        <Suspense>
-          <main>{children}</main>
-        </Suspense>
+    <html lang="hu">
+      <body className="App">
+        <ClientSideContextProvider>
+          <Suspense fallback={<div>...</div>}>
+            <Header />
+          </Suspense>
+          <main className="main">{children}</main>
+        </ClientSideContextProvider>
       </body>
     </html>
   );

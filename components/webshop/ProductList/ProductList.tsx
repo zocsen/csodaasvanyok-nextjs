@@ -7,17 +7,16 @@ import formatPrice from "@/utils/formatPrice";
 
 import { Product, ProductListProps } from "@/types/products";
 
-
-export default function ProductList({ fetchedProducts }: ProductListProps) {
+export default function ProductList({ products }: ProductListProps) {
   return (
     <div className="container">
-      {fetchedProducts &&
-        fetchedProducts.map((product: Product) => {
+      {products &&
+        products.map((product: Product) => {
           const productSlug = convertToSlug(product.name);
           const imgSrc = product.image;
           return (
             <div className="grid-item" key={product.id}>
-              <Link href={`/termek/${productSlug}/${product.id}`}>
+              <Link href={`/termek/${productSlug}-${product.id}`}>
                 <Image
                   src={imgSrc}
                   width={400}

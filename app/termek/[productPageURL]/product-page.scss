@@ -30,47 +30,6 @@
         line-height: 34px;
       }
     }
-
-    .product-size-wrapper {
-      max-width: 290px;
-      .size-title {
-        margin-bottom: 10px;
-      }
-      .size-boxes {
-        display: flex;
-        justify-content: space-between;
-
-        .size-box {
-          border-radius: var(--border-radius-md);
-          min-width: 40px;
-          padding: 10px;
-          border-width: 2px;
-          font-weight: 700;
-          font-size: 1.4rem;
-          &.selected {
-            background-color: var(--primary-font-color);
-            color: var(--primary-background-color);
-          }
-        }
-      }
-    }
-
-    .add-to-cart-button {
-      padding: 15px 30px;
-      border-radius: var(--border-radius-button);
-      border-width: 2px;
-      font-size: 2rem;
-      font-weight: 500;
-      width: 100%;
-      // max-width: 350px;
-      margin: 40px 0 40px;
-      background-color: var(--primary-font-color);
-      color: var(--primary-background-color);
-
-      &.disabled {
-        background-color: var(--secondary-background-color);
-      }
-    }
   }
 }
 

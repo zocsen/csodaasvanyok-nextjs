@@ -1,3 +1,5 @@
+import "./products-page.scss";
+
 import getCategoryFromURL from "@/utils/getCategoryFromURL";
 import ProductList from "../../../components/webshop/ProductList/ProductList";
 
@@ -14,7 +16,7 @@ async function getProducts(category: string, subcategories: string) {
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    throw new Error("Failed to fetch products");
   }
 
   const data = await res.json();
@@ -32,8 +34,15 @@ export default async function ProductsPage({
   const fetchedProducts = await getProducts(category, subcategories);
 
   return (
-    <div>
-      <ProductList fetchedProducts={fetchedProducts}></ProductList>
+    <div className="products-page">
+      {fetchedProducts.length > 0 ? (
+        <ProductList products={fetchedProducts} />
+      ) : (
+        <p className="no-products-text">
+          Sajnáljuk, de jelen pillanatban, nem tudunk terméket megjeleníteni.
+          Készletünk folyamatosan növekszik, nézz vissza később! ❤️
+        </p>
+      )}
     </div>
   );
 }

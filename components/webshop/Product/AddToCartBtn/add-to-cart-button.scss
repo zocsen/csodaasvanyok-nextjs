@@ -1,0 +1,23 @@
+.add-to-cart-button {
+  padding: 15px 30px;
+  border-radius: var(--border-radius-button);
+  border-width: 2px;
+  font-size: 2rem;
+  font-weight: 500;
+  width: 100%;
+  // max-width: 350px;
+  margin: 40px 0 40px;
+  background-color: var(--primary-font-color);
+  color: var(--primary-background-color);
+
+  &.disabled {
+    background-color: var(--secondary-background-color);
+  }
+}
+
+@media (min-width: 768px) {
+    .add-to-cart-button {
+      max-width: 200px;
+    }
+  
+}

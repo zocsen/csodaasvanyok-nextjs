@@ -43,7 +43,7 @@ export default function Homepage() {
           />
           <h2 className="collection-name">Marokkövek</h2>
         </Link>
-        <Link className="image-container" href="/termekek/teli-termekek">
+        <Link className="image-container" href="/termekek/tel">
           <Image
             className="collection-image"
             src={HomepageWinter}
@@ -53,7 +53,7 @@ export default function Homepage() {
           />
           <h2 className="collection-name">Téli varázs</h2>
         </Link>
-        <Link className="image-container" href="/termekek/szerelmes-termekek">
+        <Link className="image-container" href="/termekek/szerelem">
           <Image
             className="collection-image"
             src={HomepageLove}

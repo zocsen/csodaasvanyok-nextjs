@@ -9,7 +9,7 @@ const getCategoryFromURL = (url: string): string => {
 
   for (const [key, value] of Object.entries(categoryMap)) {
     if (url.includes(key)) {
-      return value; // Return the corresponding category value if found
+      return value;
     }
   }
 
