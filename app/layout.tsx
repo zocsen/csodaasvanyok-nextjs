@@ -3,6 +3,7 @@ import "./globals.scss";
 import { Suspense } from "react";
 import ClientSideContextProvider from "@/hooks/ClientSideContextProvider";
 import Header from "@/components/webshop/Header/Header";
+import Cart from "@/components/webshop/Cart/Cart";
 
 export const metadata: Metadata = {
   title: "Csodaásványok",
@@ -21,6 +22,7 @@ export default function RootLayout({
         <ClientSideContextProvider>
           <Suspense fallback={<div>...</div>}>
             <Header />
+            <Cart />
           </Suspense>
           <main className="main">{children}</main>
         </ClientSideContextProvider>

@@ -7,7 +7,7 @@ import formatPrice from "@/utils/formatPrice";
 
 import { Product, ProductListProps } from "@/types/products";
 
-export default function ProductList({ products }: ProductListProps) {
+const ProductList = ({ products }: ProductListProps) => {
   return (
     <div className="container">
       {products &&
@@ -32,4 +32,6 @@ export default function ProductList({ products }: ProductListProps) {
         })}
     </div>
   );
-}
+};
+
+export default ProductList;

@@ -13,12 +13,7 @@ import Link from "next/link";
 import { useCart } from "@/hooks/CartContext";
 
 const Header = () => {
-  const { openCart, getCartItemsCount } = useCart();
-  const [cartItemsCount, setCartItemsCount] = useState<number>(0);
-
-  useEffect(() => {
-    setCartItemsCount(getCartItemsCount);
-  }, [getCartItemsCount]);
+  const { openCart, cartItemsCount } = useCart();
 
   return (
     <header>

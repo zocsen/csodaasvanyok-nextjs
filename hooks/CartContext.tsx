@@ -1,6 +1,12 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { CartContextType, CartItem, CartProviderProps } from "@/types/cart";
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -16,24 +22,23 @@ export const useCart = (): CartContextType => {
 };
 
 const CartProvider = ({ children }: CartProviderProps) => {
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    if (typeof window !== "undefined") {
-      // Load cart items from local storage if available
-      const savedCart = localStorage.getItem("cartItems");
-      return savedCart ? JSON.parse(savedCart) : [];
-    }
-    return [];
-  });
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
+  const [baseDeliveryFee, setBaseDeliveryFee] = useState(1100);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [cartItemsCount, setCartItemsCount] = useState(0);
+  const [freeDeliveryThreshold, setFreeDeliveryThreshold] = useState(12000);
+  const [deliveryFee, setDeliveryFee] = useState(baseDeliveryFee);
+  const [totalPriceWithDeliveryFee, setTotalPriceWithDeliveryFee] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [isInitialRender, setIsInitialRender] = useState(true);
 
   const openCart = () => {
     setIsCartOpen(true);
-    document.body.classList.add("no-scroll");
   };
 
   const closeCart = () => {
     setIsCartOpen(false);
-    document.body.classList.remove("no-scroll");
   };
 
   const addToCart = (item: CartItem) => {
@@ -95,20 +100,70 @@ const CartProvider = ({ children }: CartProviderProps) => {
     );
   };
 
-  const totalPrice = cartItems.reduce((total, item) => {
-    return total + item.price * item.quantity;
-  }, 0);
+  const getCartItemsFromLocalStorage = useCallback(() => {
+    try {
+      const savedCart = localStorage.getItem("cartItems");
+      return savedCart && savedCart !== "undefined"
+        ? JSON.parse(savedCart)
+        : [];
+    } catch (error) {
+      console.error("Error reading cart items from localStorage:", error);
+      return [];
+    }
+  }, []);
 
-  const getCartItemsCount = cartItems.reduce((total, item) => {
-    return total + item.quantity;
-  }, 0);
+  const getTotalPrice = useCallback(() => {
+    return cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  }, [cartItems]);
 
-  const [baseDeliveryFee, setBaseDeliveryFee] = useState(1100);
-  const freeDeliveryThreshold = 12000;
+  const getCartItemsCount = useCallback(() => {
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
+  }, [cartItems]);
 
-  const deliveryFee = totalPrice >= freeDeliveryThreshold ? 0 : baseDeliveryFee;
-  const progress = Math.min((totalPrice / freeDeliveryThreshold) * 100, 100);
-  const totalPriceWithDeliveryFee = totalPrice + deliveryFee;
+  const getDeliveryFee = useCallback(() => {
+    return totalPrice >= freeDeliveryThreshold ? 0 : baseDeliveryFee;
+  }, [totalPrice, freeDeliveryThreshold, baseDeliveryFee]);
+
+  const getTotalPriceWithDeliveryFee = useCallback(() => {
+    return totalPrice + deliveryFee;
+  }, [totalPrice, deliveryFee]);
+
+  const getProgress = useCallback(() => {
+    return Math.min((totalPrice / freeDeliveryThreshold) * 100, 100);
+  }, [totalPrice, freeDeliveryThreshold]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      setCartItems(getCartItemsFromLocalStorage());
+    }
+  }, [getCartItemsFromLocalStorage]);
+
+  useEffect(() => {
+    setCartItemsCount(getCartItemsCount());
+    setTotalPrice(getTotalPrice());
+    setDeliveryFee(getDeliveryFee());
+    setTotalPriceWithDeliveryFee(getTotalPriceWithDeliveryFee());
+    setProgress(getProgress());
+  }, [
+    getCartItemsCount,
+    getTotalPrice,
+    getDeliveryFee,
+    getProgress,
+    getTotalPriceWithDeliveryFee,
+    getCartItemsFromLocalStorage,
+    cartItems,
+  ]);
+
+  useEffect(() => {
+    if (isCartOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  });
 
   const value = {
     cartItems,
@@ -120,7 +175,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
     increaseQuantity,
     decreaseQuantity,
     totalPrice,
-    getCartItemsCount,
+    cartItemsCount,
     progress,
     deliveryFee,
     totalPriceWithDeliveryFee,
@@ -129,9 +184,11 @@ const CartProvider = ({ children }: CartProviderProps) => {
   };
 
   useEffect(() => {
-    // Save cart items to local storage
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (!isInitialRender) {
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+    setIsInitialRender(false);
+  }, [cartItems, isInitialRender]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

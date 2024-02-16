@@ -33,8 +33,12 @@ export default function SideDrawer({
             />
           </button>
         </div>
-        <div className="side-drawer-content"><ContentComponent/></div>
-        <div className="side-drawer-footer"><FooterComponent/></div>
+        <div className="side-drawer-content">
+          <ContentComponent />
+        </div>
+        <div className="side-drawer-footer">
+          <FooterComponent />
+        </div>
       </div>
       <div
         className={`overlay ${isDrawerOpen ? "open" : ""}`}

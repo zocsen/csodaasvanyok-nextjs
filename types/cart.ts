@@ -5,6 +5,8 @@ export interface CartItem {
   price: number;
   quantity: number;
   size?: string | null;
+  image: string;
+  name: string;
 }
 
 export interface CartContextType {
@@ -17,7 +19,7 @@ export interface CartContextType {
   increaseQuantity: (item: CartItem) => void;
   decreaseQuantity: (item: CartItem) => void;
   totalPrice: number;
-  getCartItemsCount: number;
+  cartItemsCount: number;
   progress: number;
   deliveryFee: number;
   totalPriceWithDeliveryFee: number;

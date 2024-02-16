@@ -2,6 +2,7 @@
 import React, { ReactNode } from "react";
 import ProductProvider from "./ProductContext";
 import CartProvider from "./CartContext";
+import { DeliveryProvider } from "./DeliveryContext";
 
 interface ClientSideContextProviderProps {
   children: ReactNode;
@@ -12,7 +13,9 @@ const ClientSideContextProvider = ({
 }: ClientSideContextProviderProps) => {
   return (
     <ProductProvider>
-      <CartProvider>{children}</CartProvider>
+      <CartProvider>
+        <DeliveryProvider>{children}</DeliveryProvider>
+      </CartProvider>
     </ProductProvider>
   );
 };
