@@ -1,18 +1,26 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import "./delivery-info.scss";
-import { useDelivery } from "../../../hooks/deliveryContext";
-import { ReactComponent as CloseIcon } from "../../../images/icons/close.svg";
-import { TextField } from "@material-ui/core";
-import { useCart } from "../../../hooks/cartContext";
+import CloseIcon from "../../../public/images/icons/close.svg";
 import DeliveryMethodSelector from "./DeliveryMethodSelector";
-import { useStripeContext } from "../../../hooks/stripeContext";
+import { useStripeContext } from "@/hooks/StripeContext";
+import { useCart } from "@/hooks/CartContext";
+import { useDelivery } from "@/hooks/DeliveryContext";
+import Image from "next/image";
+import { TextField } from "@mui/material";
+import { DeliveryInfo } from "@/types/delivery";
 
-const validateEmail = (email) => {
+const validateEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 };
 
-export default function DeliveryInfo() {
+interface Errors {
+  [key: string]: string;
+}
+
+const DeliveryInfo = () => {
   const { stripe, initializeStripe } = useStripeContext();
   const {
     cartItems,
@@ -20,7 +28,7 @@ export default function DeliveryInfo() {
     deliveryFee,
     setBaseDeliveryFee,
   } = useCart();
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Errors>({});
   const {
     isDeliveryPanelOpen,
     closeDeliveryPanel,
@@ -32,9 +40,9 @@ export default function DeliveryInfo() {
   const [isFoxPostLocationSelected, setIsFoxPostLocationSelected] =
     useState(false);
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setDeliveryInfo((prev) => {
+    setDeliveryInfo((prev: DeliveryInfo) => {
       const newState = { ...prev, [name]: value };
 
       if (name === "firstName" || name === "lastName") {
@@ -54,7 +62,7 @@ export default function DeliveryInfo() {
   }
 
   const handleSubmit = async () => {
-    let validationErrors = {};
+    let validationErrors: Errors = {};
 
     // Required fields check
     Object.entries(deliveryInfo).forEach(([key, value]) => {
@@ -146,7 +154,9 @@ export default function DeliveryInfo() {
     setDeliveryMethod(event.target.value);
   };
 
-  window.addEventListener("message", receiveMessage, false);
+  if (typeof window !== "undefined") {
+    window.addEventListener("message", receiveMessage, false);
+  }
 
   const saveFoxPostAddress = (event) => {
     setDeliveryInfo((prevInfo) => ({
@@ -188,9 +198,10 @@ export default function DeliveryInfo() {
         <div className="delivery-header">
           <h2>Szállítás</h2>
           <button onClick={closeDeliveryPanel}>
-            <CloseIcon
+            <Image
+              src={CloseIcon}
               className="base-svg"
-              alt="Close icon"
+              alt="Close"
               width={34}
               height={34}
             />
@@ -208,7 +219,7 @@ export default function DeliveryInfo() {
               "FoxPost Automata" && isFoxPostLocationSelected === false ? (
             <iframe
               className="delivery-iframe"
-              frameborder="0"
+              frameBorder="0"
               loading="lazy"
               src="https://cdn.foxpost.hu/apt-finder/v1/app/"
             ></iframe>
@@ -488,4 +499,6 @@ export default function DeliveryInfo() {
       ></div>
     </>
   );
-}
+};
+
+export default DeliveryInfo;
