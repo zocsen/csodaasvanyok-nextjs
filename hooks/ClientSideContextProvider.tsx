@@ -13,13 +13,13 @@ const ClientSideContextProvider = ({
   children,
 }: ClientSideContextProviderProps) => {
   return (
-    <ProductProvider>
-      <CartProvider>
-        <DeliveryProvider>
-          <StripeProvider>{children}</StripeProvider>
-        </DeliveryProvider>
-      </CartProvider>
-    </ProductProvider>
+    <StripeProvider>
+      <ProductProvider>
+        <CartProvider>
+          <DeliveryProvider>{children}</DeliveryProvider>
+        </CartProvider>
+      </ProductProvider>
+    </StripeProvider>
   );
 };
 

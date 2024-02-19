@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import "./delivery-info.scss";
 import CloseIcon from "../../../public/images/icons/close.svg";
 import DeliveryMethodSelector from "./DeliveryMethodSelector";
@@ -9,7 +9,7 @@ import { useCart } from "@/hooks/CartContext";
 import { useDelivery } from "@/hooks/DeliveryContext";
 import Image from "next/image";
 import { TextField } from "@mui/material";
-import { DeliveryInfo } from "@/types/delivery";
+import { DeliveryInfoType } from "@/types/delivery";
 
 const validateEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -19,6 +19,12 @@ const validateEmail = (email: string) => {
 interface Errors {
   [key: string]: string;
 }
+
+type AddressInfo = {
+  street: string;
+  city: string;
+  zip: string;
+};
 
 const DeliveryInfo = () => {
   const { stripe, initializeStripe } = useStripeContext();
@@ -42,7 +48,7 @@ const DeliveryInfo = () => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setDeliveryInfo((prev: DeliveryInfo) => {
+    setDeliveryInfo((prev) => {
       const newState = { ...prev, [name]: value };
 
       if (name === "firstName" || name === "lastName") {
@@ -86,7 +92,7 @@ const DeliveryInfo = () => {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/orders/temp-order`,
+          `${process.env.NEXT_PUBLIC_API_URL}/orders/temp-order`,
           {
             method: "POST",
             headers: {
@@ -106,7 +112,7 @@ const DeliveryInfo = () => {
       }
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_API_URL}/orders/create-checkout-session`,
+          `${process.env.NEXT_PUBLIC_API_URL}/orders/create-checkout-session`,
           {
             method: "POST",
             headers: {
@@ -148,9 +154,15 @@ const DeliveryInfo = () => {
       deliveryFee: deliveryFee,
       deliveryMethod: deliveryMethod,
     }));
-  }, [cartItems, totalPriceWithDeliveryFee, deliveryFee, deliveryMethod]);
+  }, [
+    cartItems,
+    totalPriceWithDeliveryFee,
+    deliveryFee,
+    deliveryMethod,
+    setDeliveryInfo,
+  ]);
 
-  const handleDeliverySelection = (event) => {
+  const handleDeliverySelection = (event: ChangeEvent<HTMLSelectElement>) => {
     setDeliveryMethod(event.target.value);
   };
 
@@ -158,17 +170,17 @@ const DeliveryInfo = () => {
     window.addEventListener("message", receiveMessage, false);
   }
 
-  const saveFoxPostAddress = (event) => {
+  const saveFoxPostAddress = (address: AddressInfo) => {
     setDeliveryInfo((prevInfo) => ({
       ...prevInfo,
-      shippingAddress1: event.street,
-      city: event.city,
-      zip: event.zip,
+      shippingAddress1: address.street,
+      city: address.city,
+      zip: address.zip,
     }));
     setIsFoxPostLocationSelected(true);
   };
 
-  function receiveMessage(event) {
+  function receiveMessage(event: MessageEvent) {
     if (event.origin !== "https://cdn.foxpost.hu") {
       return;
     }

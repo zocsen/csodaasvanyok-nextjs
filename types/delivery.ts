@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { CartItem } from "./cart";
 
-export interface DeliveryInfo {
+export interface DeliveryInfoType {
   orderItems: CartItem[];
   shippingAddress1: string;
   city: string;
@@ -22,8 +22,10 @@ export interface DeliveryContextType {
   isDeliveryPanelOpen: boolean;
   openDeliveryPanel: () => void;
   closeDeliveryPanel: () => void;
-  deliveryInfo: DeliveryInfo;
-  setDeliveryInfo: (item: DeliveryInfo) => void;
+  deliveryInfo: DeliveryInfoType;
+  setDeliveryInfo: (
+    item: DeliveryInfoType | ((prevInfo: DeliveryInfoType) => DeliveryInfoType)
+  ) => void;
 }
 
 export interface DeliveryProviderProps {

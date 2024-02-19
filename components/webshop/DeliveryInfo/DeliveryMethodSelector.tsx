@@ -1,8 +1,15 @@
+import { ChangeEvent } from "react";
 import "./delivery-method-selector.scss";
-export default function DeliveryMethodSelector({
+
+interface DeliveryMethodSelectorProps {
+  deliveryMethod: string;
+  handleDeliverySelection: (event: ChangeEvent<HTMLSelectElement>) => void;
+}
+
+const DeliveryMethodSelector = ({
   deliveryMethod,
   handleDeliverySelection,
-}) {
+}: DeliveryMethodSelectorProps) => {
   return (
     <div className="delivery-method-selector">
       <select
@@ -22,4 +29,6 @@ export default function DeliveryMethodSelector({
       </select>
     </div>
   );
-}
+};
+
+export default DeliveryMethodSelector;

@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 import { useCart } from "./CartContext";
 import {
   DeliveryContextType,
-  DeliveryInfo,
+  DeliveryInfoType,
   DeliveryProviderProps,
 } from "@/types/delivery";
 
@@ -24,7 +24,7 @@ export const useDelivery = (): DeliveryContextType => {
 export function DeliveryProvider({ children }: DeliveryProviderProps) {
   const { cartItems, totalPriceWithDeliveryFee, deliveryFee } = useCart();
   const [isDeliveryPanelOpen, setIsDeliveryPanelOpen] = useState(false);
-  const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>({
+  const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfoType>({
     orderItems: cartItems,
     shippingAddress1: "",
     city: "",
