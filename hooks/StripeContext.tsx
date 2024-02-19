@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useCallback,
-  useEffect,
-} from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
 import { Stripe, loadStripe } from "@stripe/stripe-js";
 import { StripeContextType, StripeProviderProps } from "@/types/stripe";
 
@@ -31,10 +25,6 @@ export const StripeProvider = ({ children }: StripeProviderProps) => {
       );
       setStripe(stripeInstance);
     }
-  }, [stripe]);
-
-  useEffect(() => {
-    console.log(stripe);
   }, [stripe]);
 
   return (
