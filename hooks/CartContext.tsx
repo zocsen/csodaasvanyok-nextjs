@@ -167,6 +167,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
 
   const value = {
     cartItems,
+    setCartItems,
     addToCart,
     removeFromCart,
     isCartOpen,

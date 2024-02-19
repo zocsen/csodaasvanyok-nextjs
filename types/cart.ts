@@ -12,6 +12,7 @@ export interface CartItem {
 export interface CartContextType {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   removeFromCart: (item: CartItem) => void;
   isCartOpen: boolean;
   openCart: () => void;
