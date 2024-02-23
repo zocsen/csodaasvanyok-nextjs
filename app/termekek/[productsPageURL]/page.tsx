@@ -1,9 +1,9 @@
 import "./products-page.scss";
 
 import getCategoryFromURL from "@/utils/getCategoryFromURL";
-import ProductList from "../../../components/webshop/ProductList/ProductList";
 
 import getSubcategoryFromURL from "../../../utils/getSubcategoryFromURL";
+import ProductsHandler from "@/components/webshop/ProductsHandler/ProductsHandler";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -35,13 +35,11 @@ export default async function ProductsPage({
 
   return (
     <div className="products-page">
-      {fetchedProducts.length > 0 ? (
-        <ProductList products={fetchedProducts} />
-      ) : (
-        <p className="no-products-text">
-          Sajnáljuk, de jelen pillanatban, nem tudunk terméket megjeleníteni.
-          Készletünk folyamatosan növekszik, nézz vissza később! ❤️
-        </p>
+      {fetchedProducts.length > 0 && (
+        <ProductsHandler
+          fetchedProducts={fetchedProducts}
+          title={subcategories}
+        />
       )}
     </div>
   );

@@ -35,6 +35,10 @@
         }
       }
     }
+
+    .product-filter-container {
+      display: block;
+    }
   }
 
   .no-products-text {
@@ -70,6 +74,10 @@
           font-weight: 400;
           font-size: 2rem;
         }
+      }
+
+      .product-filter-container {
+        display: none;
       }
     }
   }

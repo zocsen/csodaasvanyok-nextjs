@@ -1,9 +1,20 @@
 import { ReactNode } from "react";
 
-
 interface Category {
   name: string;
 }
+
+export interface Benefit {
+  name: string;
+  _id: string;
+}
+
+export interface Mineral {
+  name: string;
+  _id: string;
+  benefit: Benefit[];
+}
+
 export interface Product {
   name: string;
   description: string;
@@ -11,12 +22,17 @@ export interface Product {
   images: string[];
   price: number;
   category: Category;
-  mineral: string[]; 
+  mineral: Mineral[] | null;
   subcategory: string[];
-  color: string[]; 
+  color: { code: string }[];
   dateCreated?: Date;
   id?: string;
 }
+
+export type ProductsHandlerProps = {
+  fetchedProducts: Product[];
+  title: string;
+};
 
 export type ProductListProps = {
   products: Product[];
