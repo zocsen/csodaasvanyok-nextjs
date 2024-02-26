@@ -5,6 +5,7 @@ import ClientSideContextProvider from "@/hooks/ClientSideContextProvider";
 import Header from "@/components/webshop/Header/Header";
 import Cart from "@/components/webshop/Cart/Cart";
 import DeliveryInfo from "@/components/webshop/DeliveryInfo/DeliveryInfo";
+import Footer from "@/components/webshop/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Csodaásványok",
@@ -27,6 +28,7 @@ export default function RootLayout({
             <DeliveryInfo />
           </Suspense>
           <main className="main">{children}</main>
+          <Footer />
         </ClientSideContextProvider>
       </body>
     </html>

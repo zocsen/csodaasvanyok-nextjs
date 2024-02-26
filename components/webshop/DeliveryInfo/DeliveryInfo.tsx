@@ -9,7 +9,6 @@ import { useCart } from "@/hooks/CartContext";
 import { useDelivery } from "@/hooks/DeliveryContext";
 import Image from "next/image";
 import { TextField } from "@mui/material";
-import { DeliveryInfoType } from "@/types/delivery";
 
 const validateEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

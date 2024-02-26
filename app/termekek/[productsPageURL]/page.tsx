@@ -4,6 +4,7 @@ import getCategoryFromURL from "@/utils/getCategoryFromURL";
 
 import getSubcategoryFromURL from "../../../utils/getSubcategoryFromURL";
 import ProductsHandler from "@/components/webshop/ProductsHandler/ProductsHandler";
+import { getTitleFromSubcategories } from "@/utils/getTitleFromSubcategory";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -32,15 +33,11 @@ export default async function ProductsPage({
   const category = getCategoryFromURL(productsPageURL);
   const subcategories = getSubcategoryFromURL(productsPageURL);
   const fetchedProducts = await getProducts(category, subcategories);
+  const title = getTitleFromSubcategories(category, subcategories);
 
   return (
     <div className="products-page">
-      {fetchedProducts.length > 0 && (
-        <ProductsHandler
-          fetchedProducts={fetchedProducts}
-          title={subcategories}
-        />
-      )}
+      <ProductsHandler fetchedProducts={fetchedProducts} title={title} />
     </div>
   );
 }

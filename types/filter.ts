@@ -1,25 +1,34 @@
 import { ReactNode } from "react";
+import { Benefit, Mineral } from "./products";
 
 export interface ProductFilterProps {
-  onFilterChange: (type: string, value: string | number) => void;
+  onFilterChange: (
+    type: string,
+    value: string | number | string[] | number[]
+  ) => void;
   priceRange: number[];
   minMaxValues: number[];
   toggleFilterVisibility: () => void;
   productSorter: ReactNode;
   resetFilters: () => void;
   showFilter: boolean;
-  mineralsAvailable: string[];
-  benefitsAvailable: string[];
+  mineralsAvailable: Mineral[];
+  benefitsAvailable: Benefit[];
 }
+
+export type Color = {
+  code: string;
+  name: string;
+};
 
 export interface BenefitFilterProps {
   onValueChange: (value: string[]) => void;
-  benefitsAvailable: string[];
+  benefitsAvailable: Benefit[];
 }
 
 export interface MineralFilterProps {
   onValueChange: (value: string[]) => void;
-  mineralsAvailable: string[];
+  mineralsAvailable: Mineral[];
 }
 
 export interface ColorFilterProps {

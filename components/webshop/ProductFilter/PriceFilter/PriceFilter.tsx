@@ -56,7 +56,9 @@ const PriceFilter = ({
             min={minMaxValues[0]}
             max={minMaxValues[1]}
             value={currentRange}
-            onChange={(event, newValue) => setCurrentRange(newValue)}
+            onChange={(event, newValue) =>
+              setCurrentRange(newValue as number[])
+            }
             step={50}
             sx={{
               color: "var(--primary-font-color)",

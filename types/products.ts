@@ -13,6 +13,7 @@ export interface Mineral {
   name: string;
   _id: string;
   benefit: Benefit[];
+  description: string;
 }
 
 export interface Product {

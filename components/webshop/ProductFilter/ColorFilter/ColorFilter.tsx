@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import "./color-filter.scss";
 import ExpandMoreIcon from "../../../../public/images/icons/expand-more.svg";
-import { ColorFilterProps } from "@/types/filter";
+import { Color, ColorFilterProps } from "@/types/filter";
 import Image from "next/image";
 
 const ColorFilter = ({ onValueChange }: ColorFilterProps) => {
-  const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
   const [isPanelVisible, setIsPanelVisible] = useState(true);
 
   const colors = [
@@ -27,9 +27,13 @@ const ColorFilter = ({ onValueChange }: ColorFilterProps) => {
     { name: "Zöld", code: "#008F00" },
   ];
 
-  const CheckmarkIcon = () => (
+  interface CheckmarkIconProps {
+    className?: string;
+  }
+
+  const CheckmarkIcon = ({ className }: CheckmarkIconProps) => (
     <svg
-      className="checkmark-icon"
+      className={`checkmark-icon ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
@@ -37,7 +41,7 @@ const ColorFilter = ({ onValueChange }: ColorFilterProps) => {
     </svg>
   );
 
-  const onColorSelect = (color) => {
+  const onColorSelect = (color: Color): void => {
     if (isSelected(color)) {
       setSelectedColors((prevColors) =>
         prevColors.filter((c) => c !== color.code)
@@ -47,13 +51,13 @@ const ColorFilter = ({ onValueChange }: ColorFilterProps) => {
     }
   };
 
-  const isSelected = (color) => {
+  const isSelected = (color: Color): boolean => {
     return selectedColors.includes(color.code);
   };
 
   useEffect(() => {
     onValueChange(selectedColors);
-  }, [selectedColors]);
+  }, [onValueChange, selectedColors]);
 
   return (
     <div className="filter-block">
@@ -79,9 +83,7 @@ const ColorFilter = ({ onValueChange }: ColorFilterProps) => {
               style={{ backgroundColor: color.code }}
               onClick={() => onColorSelect(color)}
             >
-              {isSelected(color) && (
-                <CheckmarkIcon className="checkmark-icon selected" />
-              )}
+              {isSelected(color) && <CheckmarkIcon className="selected" />}
               <span style={{ whiteSpace: "nowrap" }}>{color.name}</span>
             </div>
           ))}

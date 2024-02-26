@@ -8,12 +8,18 @@ import {
 } from "@/types/products";
 import ProductList from "../ProductList/ProductList";
 import ProductFilter from "../ProductFilter/ProductFilter";
-import { useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import ProductSorter from "../ProductSorter/ProductSorter";
-import { forceCheck } from "react-lazyload";
 
 import FilterIcon from "../../../public/images/icons/filter.svg";
 import Image from "next/image";
+import IsMobileContext from "@/hooks/isMobileContext";
 
 const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
   const [initialPriceRange, setInitialPriceRange] = useState([0, 0]);
@@ -29,7 +35,7 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
   const [mineralsAvailable, setMineralsAvailable] = useState<Mineral[]>([]);
   const [benefitsAvailable, setBenefitsAvailable] = useState<Benefit[]>([]);
   const [isFiltered, setIsFiltered] = useState(false);
-  const isMobile = true;
+  const isMobile = useContext(IsMobileContext);
 
   const resetFilters = () => {
     setSortTitle("");
@@ -103,55 +109,68 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
     setBenefitsAvailable(uniqueBenefitObjects);
   }
 
-  function applyFilters(products: Product[]) {
-    return products.filter((product) => {
-      const matchesPrice =
-        product.price >= priceRange[0] && product.price <= priceRange[1];
+  const applyFilters = useCallback(
+    (products: Product[]) => {
+      return products.filter((product) => {
+        const matchesPrice =
+          product.price >= priceRange[0] && product.price <= priceRange[1];
 
-      const matchesColor =
-        colorFilter.length === 0 ||
-        product.color.some((pColor) => colorFilter.includes(pColor.code));
+        const matchesColor =
+          colorFilter.length === 0 ||
+          product.color.some((pColor) => colorFilter.includes(pColor.code));
 
-      const matchesMineral =
-        mineralFilter.length === 0 ||
-        (product.mineral !== null &&
-          product.mineral.some((pMineral) =>
-            mineralFilter.includes(pMineral.name)
-          ));
+        const matchesMineral =
+          mineralFilter.length === 0 ||
+          (product.mineral !== null &&
+            product.mineral.some((pMineral) =>
+              mineralFilter.includes(pMineral.name)
+            ));
 
-      const matchesBenefit =
-        benefitFilter.length === 0 ||
-        (product.mineral !== null &&
-          product.mineral.some((mineralItem) =>
-            mineralItem.benefit.some((pBenefit) =>
-              benefitFilter.includes(pBenefit._id)
-            )
-          ));
+        const matchesBenefit =
+          benefitFilter.length === 0 ||
+          (product.mineral !== null &&
+            product.mineral.some((mineralItem) =>
+              mineralItem.benefit.some((pBenefit) =>
+                benefitFilter.includes(pBenefit._id)
+              )
+            ));
 
-      return matchesPrice && matchesColor && matchesMineral && matchesBenefit;
-    });
-  }
+        return matchesPrice && matchesColor && matchesMineral && matchesBenefit;
+      });
+    },
+    [priceRange, colorFilter, mineralFilter, benefitFilter]
+  );
 
-  function applySorting(products: Product[]) {
-    let sortedProducts = [...products];
-    switch (sortTitle) {
-      case "1": // Price Ascending
-        sortedProducts.sort((a, b) => a.price - b.price);
-        break;
-      case "2": // Price Descending
-        sortedProducts.sort((a, b) => b.price - a.price);
-        break;
-      case "3": // Newest
-        sortedProducts.sort(
-          (a, b) => new Date(b.dateCreated) - new Date(a.dateCreated)
-        );
-        break;
-      default:
-        break;
-    }
+  const applySorting = useCallback(
+    (products: Product[]) => {
+      let sortedProducts = [...products];
+      switch (sortTitle as any) {
+        case 1: // Price Ascending
+          sortedProducts.sort((a, b) => Number(a.price) - Number(b.price));
+          break;
+        case 2: // Price Descending
+          sortedProducts.sort((a, b) => b.price - a.price);
+          break;
+        case 3: // Newest
+          sortedProducts.sort((a, b) => {
+            if (a.dateCreated && b.dateCreated) {
+              return (
+                new Date(b.dateCreated).getTime() -
+                new Date(a.dateCreated).getTime()
+              );
+            } else {
+              return 0;
+            }
+          });
+          break;
+        default:
+          break;
+      }
 
-    return sortedProducts;
-  }
+      return sortedProducts;
+    },
+    [sortTitle]
+  );
 
   useEffect(() => {
     if (fetchedProducts) {
@@ -167,23 +186,26 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
     mineralFilter,
     benefitFilter,
     sortTitle,
+    applyFilters,
+    applySorting,
   ]);
 
-  useEffect(() => {
-    forceCheck();
-  }, [filteredProducts]);
+  type FilterType = "price" | "color" | "mineral" | "benefit";
 
-  const handleFilterChange = (filterType, value) => {
+  const handleFilterChange = (
+    filterType: FilterType,
+    value: string | number | string[] | number[]
+  ) => {
     const filterSetters = {
-      price: setPriceRange,
-      color: setColorFilter,
-      mineral: setMineralFilter,
-      benefit: setBenefitFilter,
+      price: setPriceRange as (value: [number, number]) => void,
+      color: setColorFilter as (value: string[]) => void,
+      mineral: setMineralFilter as (value: string[]) => void,
+      benefit: setBenefitFilter as (value: string[]) => void,
     };
-    filterSetters[filterType]?.(value);
+    filterSetters[filterType]?.(value as any);
   };
 
-  const handleSortChange = (event) => {
+  const handleSortChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSortTitle(event.target.value);
   };
 
@@ -197,7 +219,7 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
   };
   return (
     <>
-      {showFilter && (
+      {showFilter && isMobile && (
         <div
           className="overlay"
           style={{ display: "block" }}
@@ -207,12 +229,14 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
       <div className="products-page-container">
         <div
           className={`product-filter-container ${
-            showFilter ? "visible" : "hidden"
+            !isMobile || showFilter ? "visible" : "hidden"
           }`}
         >
           <ProductFilter
             key={filterKey}
-            onFilterChange={handleFilterChange}
+            onFilterChange={(type, value) =>
+              handleFilterChange(type as FilterType, value)
+            }
             priceRange={priceRange}
             minMaxValues={initialPriceRange}
             toggleFilterVisibility={toggleFilterVisibility}

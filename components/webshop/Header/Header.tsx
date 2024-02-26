@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./header.scss";
 import DesktopAccordion from "./DesktopAccordion";
 import MobileAccordion from "./MobileAccordion";

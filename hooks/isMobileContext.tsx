@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-type IsMobileContextType = boolean | undefined;
+type IsMobileContextType = boolean | null;
 
-const IsMobileContext = React.createContext<IsMobileContextType>(undefined);
+const IsMobileContext = React.createContext<IsMobileContextType>(null);
 
 export default IsMobileContext;

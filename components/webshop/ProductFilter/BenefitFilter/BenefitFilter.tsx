@@ -11,21 +11,21 @@ const BenefitFilter = ({
   benefitsAvailable,
 }: BenefitFilterProps) => {
   const [isPanelVisible, setIsPanelVisible] = useState(true);
-  const [selectedMinerals, setSelectedMinerals] = useState([]);
+  const [selectedBenefits, setSelectedBenefits] = useState<string[]>([]);
 
-  const handleChange = (mineral, checked) => {
+  const handleChange = (benefit: string, checked: boolean) => {
     if (checked) {
-      setSelectedMinerals((prevState) => [...prevState, mineral]);
+      setSelectedBenefits((prevState) => [...prevState, benefit]);
     } else {
-      setSelectedMinerals((prevState) =>
-        prevState.filter((item) => item !== mineral)
+      setSelectedBenefits((prevState) =>
+        prevState.filter((item) => item !== benefit)
       );
     }
   };
 
   useEffect(() => {
-    onValueChange(selectedMinerals);
-  }, [selectedMinerals, onValueChange]);
+    onValueChange(selectedBenefits);
+  }, [selectedBenefits, onValueChange]);
 
   return (
     <div className="filter-block">
@@ -45,7 +45,7 @@ const BenefitFilter = ({
         <div className="box-wrapper">
           {benefitsAvailable &&
             benefitsAvailable.map((benefit, i) => (
-              <div key={benefit.id} className="item">
+              <div key={benefit._id} className="item">
                 <input
                   id={`benefit${i + 1}`}
                   className="css-checkbox"

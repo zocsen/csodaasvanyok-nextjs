@@ -1,8 +1,8 @@
-'use client';
-import "./size-selector.scss"
+"use client";
+import "./size-selector.scss";
 
-import React, { useState } from 'react';
-import { useProduct } from '@/hooks/ProductContext';
+import React, { useState } from "react";
+import { useProduct } from "@/hooks/ProductContext";
 import { Product } from "@/types/products";
 import SizeHelper from "../../SizeHelper/SizeHelper";
 
@@ -10,9 +10,9 @@ interface SizeSelectorProps {
   product: Product;
 }
 
-const SizeSelector = ({product}:SizeSelectorProps) => {
+const SizeSelector = ({ product }: SizeSelectorProps) => {
   const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
-  
+
   const { selectedSize, setSelectedSize } = useProduct();
 
   const [isSizeHelperOpen, setIsSizeHelperOpen] = useState(false);
@@ -54,11 +54,11 @@ const SizeSelector = ({product}:SizeSelectorProps) => {
         </div>
       )}
       <SizeHelper
-          handleSizeHelperVisibility={() => closeSizeHelper()}
-          isSizeHelperOpen={isSizeHelperOpen}
-        />
+        handleSizeHelperVisibility={() => closeSizeHelper()}
+        isSizeHelperOpen={isSizeHelperOpen}
+      />
     </>
-  )
+  );
 };
 
 export default SizeSelector;

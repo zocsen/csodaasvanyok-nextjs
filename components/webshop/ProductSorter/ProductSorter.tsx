@@ -3,7 +3,7 @@ import "./product-sorter.scss";
 
 interface ProductSorterProps {
   sortTitle: string;
-  handleSortChange: () => void;
+  handleSortChange: (event: any) => void;
 }
 
 const FormControlSX = {

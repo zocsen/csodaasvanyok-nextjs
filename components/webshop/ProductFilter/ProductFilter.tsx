@@ -10,6 +10,8 @@ import CloseIcon from "../../../public/images/icons/close.svg";
 import DeleteIcon from "../../../public/images/icons/delete.svg";
 import { ProductFilterProps } from "@/types/filter";
 import Image from "next/image";
+import IsMobileContext from "@/hooks/isMobileContext";
+import { useContext } from "react";
 
 const ProductFilter = ({
   onFilterChange,
@@ -22,7 +24,7 @@ const ProductFilter = ({
   mineralsAvailable,
   benefitsAvailable,
 }: ProductFilterProps) => {
-  const isMobile = true;
+  const isMobile = useContext(IsMobileContext);
 
   return (
     <div

@@ -1,37 +1,34 @@
 import AddToCartButton from "@/components/webshop/Product/AddToCartBtn/AddToCartButton";
-import "./product-page.scss"
+import "./product-page.scss";
 
 import formatPrice from "@/utils/formatPrice";
 import Image from "next/image";
 import SizeSelector from "@/components/webshop/Product/SizeSelector/SizeSelector";
+import ProductMinerals from "@/components/webshop/ProductMinerals/ProductMinerals";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 async function getProductById(productId: string) {
-  const res = await fetch(
-    `${API_URL}/products/${productId}`,
-    {
-      cache: "force-cache"
-    }
-  );
+  const res = await fetch(`${API_URL}/products/${productId}`, {
+    cache: "force-cache",
+  });
 
-  if(!res.ok) {
-    throw new Error("Failed to fetch product by id")
+  if (!res.ok) {
+    throw new Error("Failed to fetch product by id");
   }
 
-  const data = await res.json()
+  const data = await res.json();
   return data;
 }
 
-
 export default async function ProductPage({
   params,
-} : {
+}: {
   params: { productPageURL: string };
 }) {
-  const segments = params.productPageURL.split('-');
-  const productId = segments[segments.length - 1]
-  const product = await getProductById(productId)
+  const segments = params.productPageURL.split("-");
+  const productId = segments[segments.length - 1];
+  const product = await getProductById(productId);
 
   return (
     <>
@@ -50,10 +47,11 @@ export default async function ProductPage({
             <span className="description-header">TERMÉK LEÍRÁSA</span> <br />
             {product?.description}
           </p>
-          <SizeSelector product={product}/>
-          <AddToCartButton product={product}/>
+          <SizeSelector product={product} />
+          <AddToCartButton product={product} />
         </div>
       </div>
+      <ProductMinerals product={product} />
     </>
   );
 }

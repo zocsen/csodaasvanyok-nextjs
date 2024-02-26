@@ -11,9 +11,9 @@ const MineralFilter = ({
   mineralsAvailable,
 }: MineralFilterProps) => {
   const [isPanelVisible, setIsPanelVisible] = useState(true);
-  const [selectedMinerals, setSelectedMinerals] = useState([]);
+  const [selectedMinerals, setSelectedMinerals] = useState<string[]>([]);
 
-  const handleChange = (mineral, checked) => {
+  const handleChange = (mineral: string, checked: boolean) => {
     if (checked) {
       setSelectedMinerals((prevState) => [...prevState, mineral]);
     } else {
@@ -46,7 +46,7 @@ const MineralFilter = ({
         <div className="box-wrapper">
           {mineralsAvailable &&
             mineralsAvailable.map((mineral, i) => (
-              <div key={mineral.id} className="item">
+              <div key={mineral._id} className="item">
                 <input
                   id={`mineral${i + 1}`}
                   className="css-checkbox"

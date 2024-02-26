@@ -18,7 +18,7 @@ const DeliveryMethodSelector = ({
         onChange={handleDeliverySelection}
         autoFocus={true}
       >
-        <option disabled selected hidden value="">
+        <option disabled defaultChecked hidden value="">
           Házhozszállítási forma kiválasztása
         </option>
         <option value="FoxPost Automata">FoxPost csomagautomata 1100Ft</option>
