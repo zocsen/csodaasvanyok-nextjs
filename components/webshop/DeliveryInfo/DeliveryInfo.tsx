@@ -46,6 +46,7 @@ const DeliveryInfo = () => {
     useState(false);
 
   const [isChecked, setIsChecked] = useState(true);
+  const [isInitialStripeRender, setIsInitialStripeRender] = useState(true);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -203,7 +204,8 @@ const DeliveryInfo = () => {
     }
   }
 
-  if (isDeliveryPanelOpen) {
+  if (isDeliveryPanelOpen && isInitialStripeRender) {
+    setIsInitialStripeRender(false);
     initializeStripe();
   }
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useCallback } from "react";
-import { Stripe, loadStripe } from "@stripe/stripe-js";
+import { Stripe } from "@stripe/stripe-js";
 import { StripeContextType, StripeProviderProps } from "@/types/stripe";
 
 const StripeContext = createContext<StripeContextType | null>(null);
@@ -20,6 +20,7 @@ export const StripeProvider = ({ children }: StripeProviderProps) => {
 
   const initializeStripe = useCallback(async () => {
     if (!stripe && process.env.NEXT_PUBLIC_STRIPE_KEY) {
+      const { loadStripe } = await import("@stripe/stripe-js");
       const stripeInstance = await loadStripe(
         process.env.NEXT_PUBLIC_STRIPE_KEY
       );
