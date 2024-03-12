@@ -39,6 +39,10 @@ export function DeliveryProvider({ children }: DeliveryProviderProps) {
     totalPrice: totalPriceWithDeliveryFee,
     deliveryFee: deliveryFee,
     deliveryMethod: "",
+    billingCountry: "Magyarország",
+    billingAddress1: "",
+    billingCity: "",
+    billingZip: "",
   });
 
   const openDeliveryPanel = () => {

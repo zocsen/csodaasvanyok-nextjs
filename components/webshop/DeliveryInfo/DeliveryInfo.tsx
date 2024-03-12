@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, use, useEffect, useState } from "react";
 import "./delivery-info.scss";
 import CloseIcon from "../../../public/images/icons/close.svg";
 import DeliveryMethodSelector from "./DeliveryMethodSelector";
@@ -8,7 +8,7 @@ import { useStripeContext } from "@/hooks/StripeContext";
 import { useCart } from "@/hooks/CartContext";
 import { useDelivery } from "@/hooks/DeliveryContext";
 import Image from "next/image";
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 
 const validateEmail = (email: string) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,6 +44,8 @@ const DeliveryInfo = () => {
   const [deliveryMethod, setDeliveryMethod] = useState("");
   const [isFoxPostLocationSelected, setIsFoxPostLocationSelected] =
     useState(false);
+
+  const [isChecked, setIsChecked] = useState(true);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -87,6 +89,7 @@ const DeliveryInfo = () => {
     }
 
     setErrors(validationErrors);
+    console.log(deliveryInfo);
 
     if (Object.keys(validationErrors).length === 0) {
       try {
@@ -163,6 +166,8 @@ const DeliveryInfo = () => {
 
   const handleDeliverySelection = (event: ChangeEvent<HTMLSelectElement>) => {
     setDeliveryMethod(event.target.value);
+    setIsFoxPostLocationSelected(false);
+    setIsChecked(true);
   };
 
   if (typeof window !== "undefined") {
@@ -177,6 +182,7 @@ const DeliveryInfo = () => {
       zip: address.zip,
     }));
     setIsFoxPostLocationSelected(true);
+    setIsChecked(false);
   };
 
   function receiveMessage(event: MessageEvent) {
@@ -200,6 +206,34 @@ const DeliveryInfo = () => {
   if (isDeliveryPanelOpen) {
     initializeStripe();
   }
+
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsChecked(event.target.checked);
+  };
+
+  useEffect(() => {
+    if (isChecked) {
+      setDeliveryInfo((prevInfo) => ({
+        ...prevInfo,
+        billingCity: deliveryInfo.city,
+        billingZip: deliveryInfo.zip,
+        billingAddress1: deliveryInfo.shippingAddress1,
+      }));
+    } else {
+      setDeliveryInfo((prevInfo) => ({
+        ...prevInfo,
+        billingCity: "",
+        billingZip: "",
+        billingAddress1: "",
+      }));
+    }
+  }, [
+    isChecked,
+    deliveryInfo.city,
+    deliveryInfo.zip,
+    deliveryInfo.shippingAddress1,
+    setDeliveryInfo,
+  ]);
 
   return (
     <>
@@ -494,6 +528,120 @@ const DeliveryInfo = () => {
                   },
                 }}
               />
+
+              {!isFoxPostLocationSelected && (
+                <div className="billing-checkbox">
+                  <input
+                    id="billing-checkbox"
+                    className="css-checkbox"
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={handleCheckboxChange}
+                    disabled={isFoxPostLocationSelected}
+                  />
+                  <label htmlFor="billing-checkbox">
+                    Szállítási cím megegyezik a számlázási címmel.
+                  </label>
+                </div>
+              )}
+
+              {isChecked ? null : (
+                <>
+                  <Typography variant="h5" className="billing-info-title">
+                    Számlázási információk
+                  </Typography>
+                  <div className="half-fields">
+                    <TextField
+                      className="half-text-field"
+                      required
+                      id="outlined-required"
+                      label="Település"
+                      name="billingCity"
+                      onChange={handleChange}
+                      value={deliveryInfo.billingCity}
+                      error={!!errors.billingCity}
+                      helperText={errors.billingCity}
+                      InputLabelProps={{
+                        style: {
+                          fontSize: "1.8rem",
+                          color: "var(--primary-font-color)",
+                          fontWeight: "500",
+                        },
+                      }}
+                      InputProps={{
+                        style: {
+                          fontSize: "1.8rem",
+                          color: "var(--primary-font-color)",
+                        },
+                      }}
+                      FormHelperTextProps={{
+                        style: {
+                          fontSize: "1.2rem",
+                        },
+                      }}
+                    />
+                    <TextField
+                      className="half-text-field"
+                      required
+                      id="outlined-required"
+                      label="Irányítószám"
+                      type="number"
+                      name="billingZip"
+                      onChange={handleChange}
+                      value={deliveryInfo.billingZip}
+                      error={!!errors.billingZip}
+                      helperText={errors.billingZip}
+                      InputLabelProps={{
+                        style: {
+                          fontSize: "1.8rem",
+                          color: "var(--primary-font-color)",
+                          fontWeight: "500",
+                        },
+                      }}
+                      InputProps={{
+                        style: {
+                          fontSize: "1.8rem",
+                          color: "var(--primary-font-color)",
+                        },
+                      }}
+                      FormHelperTextProps={{
+                        style: {
+                          fontSize: "1.2rem",
+                        },
+                      }}
+                    />
+                  </div>
+                  <TextField
+                    className="full-text-field"
+                    required
+                    id="outlined-required"
+                    label="Számlázási Cím"
+                    name="billingAddress1"
+                    onChange={handleChange}
+                    value={deliveryInfo.billingAddress1}
+                    error={!!errors.billingAddress1}
+                    helperText={errors.billingAddress1}
+                    InputLabelProps={{
+                      style: {
+                        fontSize: "1.8rem",
+                        color: "var(--primary-font-color)",
+                        fontWeight: "500",
+                      },
+                    }}
+                    InputProps={{
+                      style: {
+                        fontSize: "1.8rem",
+                        color: "var(--primary-font-color)",
+                      },
+                    }}
+                    FormHelperTextProps={{
+                      style: {
+                        fontSize: "1.2rem",
+                      },
+                    }}
+                  />
+                </>
+              )}
             </div>
           )}
         </div>

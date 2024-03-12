@@ -16,6 +16,10 @@ export interface DeliveryInfoType {
   totalPrice: number;
   deliveryFee: number;
   deliveryMethod: string;
+  billingCountry: string;
+  billingAddress1: string;
+  billingCity: string;
+  billingZip: string;
 }
 
 export interface DeliveryContextType {

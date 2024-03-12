@@ -43,6 +43,19 @@
     padding: 0 15px;
     margin-top: 10px;
 
+    .billing-checkbox {
+      padding-bottom: 14px;
+      padding-left: 4px;
+
+      label {
+        font-size: 1.6rem;
+      }
+    }
+
+    .billing-info-title {
+      padding-bottom: 8px;
+    }
+
     .foxpost-delivery-delete-button {
       display: flex;
       color: red;
