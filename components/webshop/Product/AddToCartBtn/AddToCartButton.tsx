@@ -1,10 +1,10 @@
-'use client';
-import "./add-to-cart-button.scss"
+"use client";
+import "./add-to-cart-button.scss";
 
-import React from 'react';
-import { useProduct } from '@/hooks/ProductContext';
-import { useCart } from '@/hooks/CartContext';
-import { Product } from '@/types/products';
+import React from "react";
+import { useProduct } from "@/hooks/ProductContext";
+import { useCart } from "@/hooks/CartContext";
+import { Product } from "@/types/products";
 
 interface AddToCartButtonProps {
   product: Product;
@@ -15,11 +15,14 @@ const AddToCartButton = ({ product }: AddToCartButtonProps) => {
   const { addToCart, openCart } = useCart();
 
   return (
-    <button className="add-to-cart-button"
-      disabled={!selectedSize}
+    <button
+      className={`add-to-cart-button ${
+        !selectedSize && product.category.name === "Karkötő" ? "disabled" : ""
+      }`}
+      disabled={!selectedSize && product.category.name === "Karkötő"}
       onClick={() => {
-          addToCart({ ...product, size: selectedSize, quantity: 1 });
-        
+        addToCart({ ...product, size: selectedSize, quantity: 1 });
+
         openCart();
       }}
     >
