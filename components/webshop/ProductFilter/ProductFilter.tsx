@@ -73,13 +73,7 @@ const ProductFilter = ({
         {!isMobile && (
           <button className="desktop-filter-reset" onClick={resetFilters}>
             Szűrők törlése{" "}
-            <Image
-              src={DeleteIcon}
-              alt="Delete"
-              className="red-svg"
-              width={24}
-              height={24}
-            />
+            <Image src={DeleteIcon} alt="Delete" width={24} height={24} />
           </button>
         )}
       </div>
@@ -87,13 +81,7 @@ const ProductFilter = ({
         <div className="filter-footer">
           <button className="footer-buttons delete" onClick={resetFilters}>
             Törlés{" "}
-            <Image
-              src={DeleteIcon}
-              alt="Delete"
-              className="red-svg"
-              width={24}
-              height={24}
-            />
+            <Image src={DeleteIcon} alt="Delete" width={24} height={24} />
           </button>
           <button
             className="footer-buttons save"
