@@ -30,6 +30,8 @@ export default async function ProductPage({
   const productId = segments[segments.length - 1];
   const product = await getProductById(productId);
 
+  console.log("asd");
+
   return (
     <>
       <div className="product-page">
