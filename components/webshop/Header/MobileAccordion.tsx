@@ -181,7 +181,7 @@ const MobileAccordion = () => {
           Akciós termékek 🏷️
         </Link>
         <hr />
-        <Link onClick={handleClose} href="/karkoto-tervezo">
+        <Link onClick={handleClose} href="/ekszer-tervezo">
           Ékszer tervező (HAMAROSAN)
         </Link>
         <hr />

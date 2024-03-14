@@ -34,7 +34,7 @@ export default function Footer() {
             <Link className="footer-link" href="/termekek/aprosagok">
               Apróságok
             </Link>
-            <Link className="footer-link" href="/karkohref-tervezo">
+            <Link className="footer-link" href="/ekszer-tervezo">
               Ékszer tervező (hamarosan)
             </Link>
           </div>

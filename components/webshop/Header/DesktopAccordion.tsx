@@ -166,9 +166,9 @@ const DesktopAccordion = () => {
                 <Link
                   style={{ color: "red" }}
                   onClick={handleClose}
-                  href="/karkoto-tervezo"
+                  href="/ekszer-tervezo"
                 >
-                  Karkötő tervező <br />
+                  Ékszer tervező <br />
                   (HAMAROSAN)
                 </Link>
               </h2>
