@@ -152,11 +152,11 @@ const DesktopAccordion = () => {
                   Ásvány katalógus
                 </Link>
               </h2>
-              <h2>
+              {/* <h2>
                 <Link onClick={handleClose} href="/gyakran-ismetelt-kerdesek">
                   GYIK
                 </Link>
-              </h2>
+              </h2> */}
               <h2>
                 <Link onClick={handleClose} href="/rolunk">
                   Rólunk

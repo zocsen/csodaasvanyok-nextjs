@@ -46,13 +46,18 @@ export default function Footer() {
             <Link className="footer-link" href="/rolunk">
               Rólunk
             </Link>
-            <Link className="footer-link" href="/gyakran-ismetelt-kerdesek">
+            {/* <Link className="footer-link" href="/gyakran-ismetelt-kerdesek">
               Gyakran ismételt kérdések
+            </Link> */}
+            <Link
+              className="footer-link"
+              href="/altalanos-szerzodesi-feltetelek"
+            >
+              Általános szerződési feltételek
             </Link>
-            <Link className="footer-link" href="/aszf">
-              ÁSZF
+            <Link href="/adatkezelesi-tajekoztato">
+              Adatkezelési tájékoztató
             </Link>
-            {/* <Link href="/adatkezelesi-tajekoztahref">Adatkezelési tájékoztató</Link> */}
           </div>
           <div className="footer-contact">
             <h3>Elérhetőségeink</h3>
