@@ -1,4 +1,24 @@
+import { Metadata } from "next";
 import "./rolunk.scss";
+
+export const metadata: Metadata = {
+  title: "Rólunk - Csodaásványok",
+  description:
+    "Fedezze fel egyedi ásványkarkötőink széles választékát webshopunkban. Mindegyik karkötő különleges ásványokból készül, melyek nem csak gyönyörűek, de különleges jelentéssel is bírnak. Ismerje meg az ásványok titkait, hatásait és válassza ki az Önnek legmegfelelőbb darabot.",
+  keywords: [
+    "magyar ékszer webáruház",
+    "magyar vállalkozás",
+    "ásvány karkötők",
+    "egyedi ékszerek",
+    "ásvány ékszerek",
+    "gyógyító ásványok",
+    "ásványok jelentése",
+    "ásványok hatása",
+    "ékszer tervező",
+    "karkötő tervező",
+    "egyedi karkötők",
+  ],
+};
 
 export default function AboutUs() {
   return (

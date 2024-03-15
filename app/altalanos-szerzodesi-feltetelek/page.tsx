@@ -1,5 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Metadata } from "next";
 import "./aszf.scss";
+
+export const metadata: Metadata = {
+  title: "ÁSZF - Csodaásványok",
+  description:
+    "Az Csodaásványok Általános Szerződési Feltételei. Ismerje meg vásárlási feltételeinket, jogait és kötelezettségeit vásárlóként a Csodaásványok webáruházban.",
+};
 
 const ASZF = () => {
   return (

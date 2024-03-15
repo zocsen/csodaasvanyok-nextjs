@@ -1,4 +1,11 @@
+import { Metadata } from "next";
 import "./adatkezelesi-tajekoztato.scss";
+
+export const metadata: Metadata = {
+  title: "Adatkezelés - Csodaásványok",
+  description:
+    "Ismerje meg adatvédelmi gyakorlatainkat a Csodaásványok webáruházban. Tájékozódjon arról, hogyan kezeljük és védjük személyes adatait, miközben eredeti ásvány karkötőket, nyakláncokat és fülbevalókat böngész.",
+};
 
 const AdatkezelesiTajekoztato = () => {
   return (

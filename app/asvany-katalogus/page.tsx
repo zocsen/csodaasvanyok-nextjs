@@ -1,6 +1,13 @@
 import ProductMinerals from "@/components/webshop/ProductMinerals/ProductMinerals";
+import { Metadata } from "next";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export const metadata: Metadata = {
+  title: "Ásvány Katalógus - Csodaásványok",
+  description:
+    "Fedezze fel egyedi ásványkarkötőink széles választékát webshopunkban. Mindegyik karkötő különleges ásványokból készül, melyek nem csak gyönyörűek, de különleges jelentéssel is bírnak. Ismerje meg az ásványok titkait, hatásait és válassza ki az Önnek legmegfelelőbb darabot.",
+};
 
 async function getMinerals() {
   const res = await fetch(`${API_URL}/minerals`, {
