@@ -550,7 +550,7 @@ const ASZF = () => {
       <p>
         A weboldal adatkezelési tájékoztatója elérhető{" "}
         <a href="/adatkezelesi-tajekoztato">
-          <strong>aezen</strong>
+          <strong>ezen</strong>
         </a>{" "}
         az oldalon.
       </p>
