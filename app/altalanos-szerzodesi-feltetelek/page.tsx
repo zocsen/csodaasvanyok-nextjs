@@ -548,8 +548,11 @@ const ASZF = () => {
       <h2>11. Adatvédelem</h2>
       <br />
       <p>
-        A weboldal adatkezelési tájékoztatója elérhető <strong>ezen</strong> az
-        oldalon.
+        A weboldal adatkezelési tájékoztatója elérhető{" "}
+        <a href="/adatkezelesi-tajekoztato">
+          <strong>aezen</strong>
+        </a>{" "}
+        az oldalon.
       </p>
       <br />
       <br />
