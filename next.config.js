@@ -1,4 +1,9 @@
-module.exports = {
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -16,3 +21,6 @@ module.exports = {
     ],
   },
 };
+
+// This will apply the bundle analyzer plugin to your Next.js configuration.
+module.exports = withBundleAnalyzer(nextConfig);
