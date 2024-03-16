@@ -35,6 +35,23 @@
         }
       }
     }
+
+    .load-more {
+      display: flex;
+      justify-content: center;
+      margin: 40px auto;
+      padding: 16px 32px;
+      border-radius: var(--border-radius-md);
+      background-color: var(--primary-background-color);
+      font-size: 1.8rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--primary-font-color);
+        color: var(--primary-background-color);
+      }
+    }
   }
 }
 

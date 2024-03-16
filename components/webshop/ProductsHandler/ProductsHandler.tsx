@@ -37,6 +37,12 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
   const [isFiltered, setIsFiltered] = useState(false);
   const isMobile = useContext(IsMobileContext);
 
+  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+
+  const loadMoreProducts = () => {
+    setVisibleProducts(filteredProducts.slice(0, visibleProducts.length + 12)); // Load 12 more products
+  };
+
   const resetFilters = () => {
     setSortTitle("");
 
@@ -178,6 +184,7 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
       let sortedFiltered = applySorting(filtered);
       setIsFiltered(true);
       setFilteredProducts(sortedFiltered);
+      setVisibleProducts(sortedFiltered.slice(0, 12));
     }
   }, [
     fetchedProducts,
@@ -306,7 +313,17 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
               </p>
             )
           ) : filteredProducts.length !== 0 ? (
-            <ProductList products={filteredProducts} />
+            <>
+              <ProductList products={visibleProducts} />
+              {visibleProducts.length < filteredProducts.length && (
+                <button
+                  onClick={loadMoreProducts}
+                  className="load-more box-shadow-border"
+                >
+                  Mutass többet
+                </button>
+              )}
+            </>
           ) : (
             <p>
               Sajnáljuk, de jelen pillanatban, nem tudunk terméket
