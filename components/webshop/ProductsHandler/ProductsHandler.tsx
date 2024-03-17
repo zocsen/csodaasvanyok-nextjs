@@ -13,6 +13,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import ProductSorter from "../ProductSorter/ProductSorter";
@@ -24,6 +25,7 @@ import IsMobileContext from "@/hooks/isMobileContext";
 const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
   const [initialPriceRange, setInitialPriceRange] = useState([0, 0]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
   const [colorFilter, setColorFilter] = useState<string[]>([]);
   const [mineralFilter, setMineralFilter] = useState<string[]>([]);
@@ -37,11 +39,11 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
   const [isFiltered, setIsFiltered] = useState(false);
   const isMobile = useContext(IsMobileContext);
 
-  const [visibleProducts, setVisibleProducts] = useState<Product[]>([]);
+  const loadMoreButtonRef = useRef(null);
 
-  const loadMoreProducts = () => {
-    setVisibleProducts(filteredProducts.slice(0, visibleProducts.length + 12)); // Load 12 more products
-  };
+  const loadMoreProducts = useCallback(() => {
+    setVisibleProducts(filteredProducts.slice(0, visibleProducts.length + 12));
+  }, [filteredProducts, visibleProducts]);
 
   const resetFilters = () => {
     setSortTitle("");
@@ -224,6 +226,34 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
       document.body.classList.remove("no-scroll");
     }
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          loadMoreProducts();
+        }
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 1.0,
+      }
+    );
+
+    if (loadMoreButtonRef.current) {
+      observer.observe(loadMoreButtonRef.current);
+    }
+
+    return () => {
+      if (loadMoreButtonRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(loadMoreButtonRef.current);
+      }
+    };
+  }, [loadMoreProducts, visibleProducts]);
+
   return (
     <>
       {showFilter && isMobile && (
@@ -317,6 +347,7 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
               <ProductList products={visibleProducts} />
               {visibleProducts.length < filteredProducts.length && (
                 <button
+                  ref={loadMoreButtonRef}
                   onClick={loadMoreProducts}
                   className="load-more box-shadow-border"
                 >
