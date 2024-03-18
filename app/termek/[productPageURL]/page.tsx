@@ -39,6 +39,7 @@ export default async function ProductPage({
           alt="Termék"
           width={400}
           height={400}
+          priority={true}
         />
         <div className="product-details">
           <h1 className="product-name">{product?.name}</h1>

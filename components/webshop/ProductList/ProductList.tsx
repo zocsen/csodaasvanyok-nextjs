@@ -23,6 +23,7 @@ const ProductList = ({ products }: ProductListProps) => {
                   height={400}
                   alt="Termék"
                   className="product-image"
+                  priority={true}
                 />
                 <h1 className="product-name">{product.name}</h1>
                 <p className="product-price">{formatPrice(product.price)}</p>
