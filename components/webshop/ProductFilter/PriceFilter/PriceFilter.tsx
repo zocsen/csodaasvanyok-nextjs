@@ -51,8 +51,12 @@ const PriceFilter = ({
             <label>Max: {rangeValues[1]} Ft</label>
           </div>
         </div>
+        <label id="price-range-label" className="screen-reader-only-label">
+          Árhatárok
+        </label>
         <div className="price-slider">
           <Slider
+            aria-labelledby="price-range-label"
             min={minMaxValues[0]}
             max={minMaxValues[1]}
             value={currentRange}

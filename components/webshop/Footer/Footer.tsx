@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="footer-container">
         <div className="upper-footer">
           <div className="footer-menu">
-            <h3>Menü</h3>
+            <h2>Menü</h2>
 
             <Link className="footer-link" href="/termekek/osszes-karkohref">
               Karkötők
@@ -39,7 +39,7 @@ export default function Footer() {
             </Link>
           </div>
           <div className="footer-help">
-            <h3>Segítség</h3>
+            <h2>Segítség</h2>
             <Link className="footer-link" href="/asvany-katalogus">
               Ásvány katalógus
             </Link>
@@ -60,7 +60,7 @@ export default function Footer() {
             </Link>
           </div>
           <div className="footer-contact">
-            <h3>Elérhetőségeink</h3>
+            <h2>Elérhetőségeink</h2>
             <p className="email">info@csodaasvanyok.hu</p>
             <div className="contact-icons">
               <a href="https://www.facebook.com/csodaasvanyok">

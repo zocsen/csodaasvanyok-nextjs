@@ -12,7 +12,10 @@ const DeliveryMethodSelector = ({
 }: DeliveryMethodSelectorProps) => {
   return (
     <div className="delivery-method-selector">
-      <label htmlFor="delivery-method-select" className="screen-reader-only">
+      <label
+        htmlFor="delivery-method-select"
+        className="screen-reader-only-label"
+      >
         Válassza ki a szállítási módot:
       </label>
       <select
