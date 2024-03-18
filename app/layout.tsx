@@ -42,8 +42,8 @@ export default function RootLayout({
           <main className="main">{children}</main>
           <Footer />
         </ClientSideContextProvider>
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
