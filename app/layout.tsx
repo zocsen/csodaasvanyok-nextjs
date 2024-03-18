@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter, Lora } from "next/font/google";
 import "./globals.scss";
 import { Suspense } from "react";
 import ClientSideContextProvider from "@/hooks/ClientSideContextProvider";
@@ -13,13 +14,25 @@ export const metadata: Metadata = {
     "Csodaásványok webárúház, eredeti ásvány karkötők, nyakláncok, fülbevalók",
 };
 
+const inter = Inter({
+  subsets: ["latin-ext"],
+  weight: ["500", "600", "700"],
+  variable: "--primary-font-family",
+});
+
+const lora = Lora({
+  subsets: ["latin-ext"],
+  weight: ["500", "600", "700"],
+  variable: "--secondary-font-family",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="hu">
+    <html lang="hu" className={`${inter.variable} ${lora.variable}`}>
       <body className="App">
         <ClientSideContextProvider>
           <Suspense fallback={<div>...</div>}>
