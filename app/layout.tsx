@@ -7,6 +7,7 @@ import Header from "@/components/webshop/Header/Header";
 import Cart from "@/components/webshop/Cart/Cart";
 import DeliveryInfo from "@/components/webshop/DeliveryInfo/DeliveryInfo";
 import Footer from "@/components/webshop/Footer/Footer";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Csodaásványok",
@@ -42,6 +43,7 @@ export default function RootLayout({
           <Footer />
         </ClientSideContextProvider>
       </body>
+      <Analytics />
     </html>
   );
 }
