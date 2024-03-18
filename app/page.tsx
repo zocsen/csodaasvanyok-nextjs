@@ -67,6 +67,7 @@ const ImageLink = ({ image }: ImageLinkProps) => (
       height={IMAGE_HEIGHT}
       priority={true}
       placeholder="blur"
+      quality={75}
     />
     <h2 className="collection-name">{image.name}</h2>
   </Link>
