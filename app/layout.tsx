@@ -16,13 +16,11 @@ export const metadata: Metadata = {
 
 const inter = Inter({
   subsets: ["latin-ext"],
-  weight: ["500", "600", "700"],
   variable: "--primary-font-family",
 });
 
 const lora = Lora({
   subsets: ["latin-ext"],
-  weight: ["500", "600", "700"],
   variable: "--secondary-font-family",
 });
 
