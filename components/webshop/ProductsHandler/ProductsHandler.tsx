@@ -38,12 +38,16 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
   const [benefitsAvailable, setBenefitsAvailable] = useState<Benefit[]>([]);
   const [isFiltered, setIsFiltered] = useState(false);
   const isMobile = useContext(IsMobileContext);
+  const [isClicked, setIsClicked] = useState(false);
 
   const loadMoreButtonRef = useRef(null);
 
   const loadMoreProducts = useCallback(() => {
+    if (!isClicked) {
+      setIsClicked(true);
+    }
     setVisibleProducts(filteredProducts.slice(0, visibleProducts.length + 12));
-  }, [filteredProducts, visibleProducts]);
+  }, [filteredProducts, isClicked, visibleProducts.length]);
 
   const resetFilters = () => {
     setSortTitle("");
@@ -228,6 +232,7 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
   };
 
   useEffect(() => {
+    if (!isClicked) return;
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
@@ -252,7 +257,7 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
         observer.unobserve(loadMoreButtonRef.current);
       }
     };
-  }, [loadMoreProducts, visibleProducts]);
+  }, [isClicked, loadMoreProducts, visibleProducts]);
 
   return (
     <>
