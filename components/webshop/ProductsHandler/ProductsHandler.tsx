@@ -8,8 +8,6 @@ import {
 } from "@/types/products";
 import {
   ChangeEvent,
-  Suspense,
-  lazy,
   useCallback,
   useContext,
   useEffect,
@@ -17,8 +15,8 @@ import {
   useState,
 } from "react";
 import ProductList from "../ProductList/ProductList";
-const ProductFilter = lazy(() => import("../ProductFilter/ProductFilter"));
-const ProductSorter = lazy(() => import("../ProductSorter/ProductSorter"));
+import ProductFilter from "../ProductFilter/ProductFilter";
+import ProductSorter from "../ProductSorter/ProductSorter";
 
 import FilterIcon from "../../../public/images/icons/filter.svg";
 import Image from "next/image";
@@ -271,34 +269,31 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
         ></div>
       )}
       <div className="products-page-container">
-        <Suspense fallback={<div>...</div>}>
-          <div
-            className={`product-filter-container ${
-              !isMobile || showFilter ? "visible" : "hidden"
-            }`}
-          >
-            <ProductFilter
-              key={filterKey}
-              onFilterChange={(type, value) =>
-                handleFilterChange(type as FilterType, value)
-              }
-              priceRange={priceRange}
-              minMaxValues={initialPriceRange}
-              toggleFilterVisibility={toggleFilterVisibility}
-              resetFilters={resetFilters}
-              showFilter={showFilter}
-              mineralsAvailable={mineralsAvailable}
-              benefitsAvailable={benefitsAvailable}
-              productSorter={
-                <ProductSorter
-                  sortTitle={sortTitle}
-                  handleSortChange={handleSortChange}
-                />
-              }
-            />
-          </div>
-        </Suspense>
-
+        <div
+          className={`product-filter-container ${
+            !isMobile || showFilter ? "visible" : "hidden"
+          }`}
+        >
+          <ProductFilter
+            key={filterKey}
+            onFilterChange={(type, value) =>
+              handleFilterChange(type as FilterType, value)
+            }
+            priceRange={priceRange}
+            minMaxValues={initialPriceRange}
+            toggleFilterVisibility={toggleFilterVisibility}
+            resetFilters={resetFilters}
+            showFilter={showFilter}
+            mineralsAvailable={mineralsAvailable}
+            benefitsAvailable={benefitsAvailable}
+            productSorter={
+              <ProductSorter
+                sortTitle={sortTitle}
+                handleSortChange={handleSortChange}
+              />
+            }
+          />
+        </div>
         <div className="products-page-main">
           <h1 className="products-page-title">
             <div className="actual-title">
@@ -311,12 +306,10 @@ const ProductsHandler = ({ fetchedProducts, title }: ProductsHandlerProps) => {
             </div>
 
             {!isMobile ? (
-              <Suspense fallback={<div>...</div>}>
-                <ProductSorter
-                  sortTitle={sortTitle}
-                  handleSortChange={handleSortChange}
-                />
-              </Suspense>
+              <ProductSorter
+                sortTitle={sortTitle}
+                handleSortChange={handleSortChange}
+              />
             ) : (
               ""
             )}
