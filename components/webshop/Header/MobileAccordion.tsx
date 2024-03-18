@@ -111,54 +111,58 @@ const MobileAccordion = () => {
 
         <hr />
         <AccordionItem title="Népszerűek 🔥">
-          <li>
-            <Link onClick={handleClose} href="/termekek/tel">
-              Téli varázs ❄️
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleClose} href="/termekek/szerelem">
-              Szerelmeseknek 💖
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleClose} href="/termekek/horoszkop">
-              Horoszkóp ♌
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleClose} href="/termekek/akcio">
-              Akciós termékek 🏷️
-            </Link>
-          </li>
+          <ul>
+            <li>
+              <Link onClick={handleClose} href="/termekek/tel">
+                Téli varázs ❄️
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} href="/termekek/szerelem">
+                Szerelmeseknek 💖
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} href="/termekek/horoszkop">
+                Horoszkóp ♌
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} href="/termekek/akcio">
+                Akciós termékek 🏷️
+              </Link>
+            </li>
+          </ul>
         </AccordionItem>
         <hr />
         <AccordionItem title="Karkötők">
-          <li>
-            <Link onClick={handleClose} href="/termekek/osszes-karkoto">
-              Összes karkötő
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleClose} href="/termekek/noi-karkotok">
-              Női karkötők
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleClose} href="/termekek/ferfi-karkotok">
-              Férfi karkötők
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleClose} href="/termekek/paros-karkotok">
-              Páros karkötők
-            </Link>
-          </li>
-          <li>
-            <Link onClick={handleClose} href="/termekek/natural-karkotok">
-              Natural karkötők
-            </Link>
-          </li>
+          <ul>
+            <li>
+              <Link onClick={handleClose} href="/termekek/osszes-karkoto">
+                Összes karkötő
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} href="/termekek/noi-karkotok">
+                Női karkötők
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} href="/termekek/ferfi-karkotok">
+                Férfi karkötők
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} href="/termekek/paros-karkotok">
+                Páros karkötők
+              </Link>
+            </li>
+            <li>
+              <Link onClick={handleClose} href="/termekek/natural-karkotok">
+                Natural karkötők
+              </Link>
+            </li>
+          </ul>
         </AccordionItem>
         <hr />
         <Link onClick={handleClose} href="/termekek/marokkovek">

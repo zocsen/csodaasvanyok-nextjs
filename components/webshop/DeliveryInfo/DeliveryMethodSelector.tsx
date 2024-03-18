@@ -12,14 +12,18 @@ const DeliveryMethodSelector = ({
 }: DeliveryMethodSelectorProps) => {
   return (
     <div className="delivery-method-selector">
+      <label htmlFor="delivery-method-select" className="screen-reader-only">
+        Válassza ki a szállítási módot:
+      </label>
       <select
+        id="delivery-method-select"
         className="delivery-selector"
         value={deliveryMethod}
         onChange={handleDeliverySelection}
         autoFocus={true}
       >
         <option disabled defaultChecked hidden value="">
-          Házhozszállítási forma kiválasztása
+          Szállítási mód kiválasztása
         </option>
         <option value="GLS Házhozszállítás">GLS házhozszállítás 1900Ft</option>
         <option value="Posta Házhozszállítás">
