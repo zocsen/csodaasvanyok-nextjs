@@ -1,13 +1,13 @@
 import "./footer.scss";
-import FacebookLogo from "../../../public/images/icons/logo-facebook.svg";
-import InstagramLogo from "../../../public/images/icons/logo-instagram.svg";
-import TiktokLogo from "../../../public/images/icons/logo-tiktok.svg";
+import FacebookLogo from "@public/images/icons/logo-facebook.svg";
+import InstagramLogo from "@public/images/icons/logo-instagram.svg";
+import TiktokLogo from "@public/images/icons/logo-tiktok.svg";
 
-import MasterCard from "../../../public/images/icons/payments/MasterCard.png";
-import Visa from "../../../public/images/icons/payments/Visa.png";
-import ApplePay from "../../../public/images/icons/payments/ApplePay.png";
-import GooglePay from "../../../public/images/icons/payments/GooglePay.png";
-import StripePay from "../../../public/images/icons/payments/StripePay.png";
+import MasterCard from "@public/images/icons/payments/MasterCard.png";
+import Visa from "@public/images/icons/payments/Visa.png";
+import ApplePay from "@public/images/icons/payments/ApplePay.png";
+import GooglePay from "@public/images/icons/payments/GooglePay.png";
+import StripePay from "@public/images/icons/payments/StripePay.png";
 import Link from "next/link";
 import Image from "next/image";
 

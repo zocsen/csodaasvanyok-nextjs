@@ -2,7 +2,7 @@ import "./products-page.scss";
 
 import getCategoryFromURL from "@/utils/getCategoryFromURL";
 
-import getSubcategoryFromURL from "../../../utils/getSubcategoryFromURL";
+import getSubcategoryFromURL from "@/utils/getSubcategoryFromURL";
 import ProductsHandler from "@/components/webshop/ProductsHandler/ProductsHandler";
 import { getTitleFromSubcategories } from "@/utils/getTitleFromSubcategory";
 

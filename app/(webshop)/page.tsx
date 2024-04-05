@@ -1,10 +1,10 @@
 import "./homepage.scss";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import HomepageBracelets from "../public/images/homepage-bracelets.webp";
-import HomepageMinerals from "../public/images/homepage-minerals.webp";
-import HomepageWinter from "../public/images/homepage-winter.webp";
-import HomepageLove from "../public/images/homepage-love.webp";
+import HomepageBracelets from "@public/images/homepage-bracelets.webp";
+import HomepageMinerals from "@public/images/homepage-minerals.webp";
+import HomepageWinter from "@public/images/homepage-winter.webp";
+import HomepageLove from "@public/images/homepage-love.webp";
 
 export const runtime = "edge";
 

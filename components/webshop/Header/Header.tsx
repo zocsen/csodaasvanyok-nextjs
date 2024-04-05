@@ -5,9 +5,9 @@ import "./header.scss";
 import DesktopAccordion from "./DesktopAccordion";
 import MobileAccordion from "./MobileAccordion";
 
-import Logo from "../../../public/images/logo/logo.webp";
+import Logo from "@public/images/logo/logo.webp";
 
-import ShoppingBagIcon from "../../../public/images/icons/shopping-bag.svg";
+import ShoppingBagIcon from "@public/images/icons/shopping-bag.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/hooks/CartContext";

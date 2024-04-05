@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import "./price-filter.scss";
 import { Slider } from "@mui/material";
 
-import ExpandMoreIcon from "../../../../public/images/icons/expand-more.svg";
+import ExpandMoreIcon from "@public/images/icons/expand-more.svg";
 import { PriceFilterProps } from "@/types/filter";
 import Image from "next/image";
 

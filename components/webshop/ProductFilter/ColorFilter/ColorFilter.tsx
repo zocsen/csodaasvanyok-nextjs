@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import "./color-filter.scss";
-import ExpandMoreIcon from "../../../../public/images/icons/expand-more.svg";
+import ExpandMoreIcon from "@public/images/icons/expand-more.svg";
 import { Color, ColorFilterProps } from "@/types/filter";
 import Image from "next/image";
 

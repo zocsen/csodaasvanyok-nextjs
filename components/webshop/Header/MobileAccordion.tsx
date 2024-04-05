@@ -3,10 +3,10 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import "./mobile-accordion.scss";
 
-import MenuIcon from "../../../public/images/icons/menu.svg";
-import CloseIcon from "../../../public/images/icons/close.svg";
-import RemoveIcon from "../../../public/images/icons/remove.svg";
-import AddIcon from "../../../public/images/icons/add.svg";
+import MenuIcon from "@public/images/icons/menu.svg";
+import CloseIcon from "@public/images/icons/close.svg";
+import RemoveIcon from "@public/images/icons/remove.svg";
+import AddIcon from "@public/images/icons/add.svg";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
-import "./globals.scss";
+import "../globals.scss";
 import { Suspense } from "react";
 import ClientSideContextProvider from "@/hooks/ClientSideContextProvider";
 import Header from "@/components/webshop/Header/Header";

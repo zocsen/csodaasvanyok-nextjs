@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./desktop-accordion.scss";
 
-import ExpandMoreIcon from "../../../public/images/icons/expand-more.svg";
+import ExpandMoreIcon from "@public/images/icons/expand-more.svg";
 import Image from "next/image";
 import Link from "next/link";
 
