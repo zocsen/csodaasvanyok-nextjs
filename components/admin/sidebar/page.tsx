@@ -1,6 +1,6 @@
 import SidebarProps from "./SidebarProps";
 import "./sidebar.scss";
-import LogoutForm from "@/components/shared/LogoutForm/LogoutForm";
+import LogoutForm from "@/components/shared/Auth/LogoutForm/LogoutForm";
 
 const SideBar = () => {
   return (

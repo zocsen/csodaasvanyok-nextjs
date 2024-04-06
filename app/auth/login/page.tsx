@@ -1,7 +1,15 @@
-import LoginForm from "@/components/shared/LoginForm/LoginForm";
+import LoginForm from "@/components/shared/Auth/LoginForm/LoginForm";
+import ToRegistrationForm from "@/components/shared/Auth/ToRegistrationForm/ToRegistrationForm";
 
-const AdminAuthLoginPage = () => {
-  return <LoginForm />;
+import "./login.scss";
+
+const AuthLoginPage = () => {
+  return (
+    <div className="login-page">
+      <LoginForm />
+      <ToRegistrationForm />
+    </div>
+  );
 };
 
-export default AdminAuthLoginPage;
+export default AuthLoginPage;

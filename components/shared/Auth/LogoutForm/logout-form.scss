@@ -1,0 +1,17 @@
+.auth-btn {
+  font-size: 2rem;
+  padding: 16px;
+  width: 100%;
+  border-radius: var(--border-radius-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  background-color: var(--primary-font-color);
+  color: var(--primary-background-color);
+  font-weight: 500;
+}
+
+.logout-img {
+  margin-right: 4px;
+}

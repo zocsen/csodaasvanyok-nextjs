@@ -1,4 +1,3 @@
-"use server";
 import { redirect } from "next/navigation";
 import { logout } from "@/lib";
 import "./logout-form.scss";
@@ -14,7 +13,7 @@ export default async function LogoutForm() {
         redirect("/auth/login");
       }}
     >
-      <button className="logout-btn box-shadow-border" type="submit">
+      <button className="auth-btn" type="submit">
         <Image
           className="logout-img"
           src={LogoutIcon}

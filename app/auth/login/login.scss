@@ -1,0 +1,14 @@
+.login-page {
+  display: flex;
+  gap: 50px;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+}

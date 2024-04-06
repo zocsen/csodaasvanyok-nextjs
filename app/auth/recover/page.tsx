@@ -1,7 +1,7 @@
-import RecoverForm from "@/components/shared/RecoverForm/RecoverForm";
+import RecoverForm from "@/components/shared/Auth/RecoverForm/RecoverForm";
 
-const AdminAuthLoginPage = () => {
+const AuthRecoverPage = () => {
   return <RecoverForm />;
 };
 
-export default AdminAuthLoginPage;
+export default AuthRecoverPage;

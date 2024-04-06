@@ -1,9 +1,10 @@
 .sidebar {
   min-width: 260px;
   font-size: 2.2rem;
+  margin: 20px;
 
   nav {
-    height: 100vh;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -12,15 +13,16 @@
 
   li {
     transition: all 0.2s;
+    font-weight: 500;
 
     &:hover {
       font-weight: 600;
       border-style: solid;
       border-color: var(--primary-font-color);
-      border-width: 0 0 0 4px;
+      border-width: 0 0 0 6px;
       border-radius: var(--border-radius-sm);
       background-color: var(--primary-button-color);
-      margin: 0 0 0 1.2rem;
+      margin: 0 0 0 12px;
       transition: all 0.2s;
     }
 
@@ -37,9 +39,7 @@
   font-weight: 600;
   border-style: solid;
   border-color: var(--primary-font-color);
-  border-width: 0 0 0 4px;
+  border-width: 0 0 0 6px;
   border-radius: var(--border-radius-sm);
-  margin: 0 0 0 1.2rem;
   transition: all 0.2s;
-  background-color: var(--primary-button-color);
 }

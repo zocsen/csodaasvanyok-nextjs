@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import "../globals.scss";
+import "@/components/shared/Auth/auth.scss";
 
 export const metadata: Metadata = {
   title: "Admin - Csodaásványok",
