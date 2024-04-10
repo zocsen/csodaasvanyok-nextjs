@@ -1,14 +1,31 @@
 .sidebar {
   min-width: 260px;
   font-size: 2.2rem;
-  margin: 20px;
+
+  background-color: var(--primary-background-color);
+  position: fixed;
+  left: -260px; // Start hidden to the left of the viewport
+  top: 0;
+  bottom: 0;
+  transition: left 0.3s ease; // Smooth transition for the 'left' property
+  z-index: 1000;
+
+  // When the sidebar is open, move it into view
+  &.open {
+    left: 0;
+  }
 
   nav {
-    height: 95vh;
+    height: 88vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    // justify-content: space-between;
     transition: all 0.2s;
+  }
+
+  .sidebar-logo {
+    margin: 20px 0;
   }
 
   li {
@@ -42,4 +59,21 @@
   border-width: 0 0 0 6px;
   border-radius: var(--border-radius-sm);
   transition: all 0.2s;
+}
+
+.mobile-header {
+  display: flex; // Enable Flexbox
+  align-items: center; // Vertically align items to the center
+  justify-content: space-between; // Justify content for space between the first and last items
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    position: unset;
+  }
+
+  .mobile-header {
+    display: none;
+  }
 }

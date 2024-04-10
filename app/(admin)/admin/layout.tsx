@@ -3,6 +3,7 @@ import { Inter, Lora } from "next/font/google";
 import "../../globals.scss";
 import "./admin.scss";
 import SideBar from "@/components/admin/sidebar/page";
+import LogoutForm from "@/components/shared/Auth/LogoutForm/LogoutForm";
 
 export const metadata: Metadata = {
   title: "Admin - Csodaásványok",
@@ -29,7 +30,11 @@ export default function RootLayout({
     <html lang="hu" className={`${inter.variable} ${lora.variable}`}>
       <body className="App">
         <div className="admin-page-container">
-          <SideBar />
+          <div>
+            <SideBar />
+            <LogoutForm />
+          </div>
+
           <main className="admin-main">{children}</main>
         </div>
       </body>

@@ -1,3 +1,4 @@
+"use server";
 import { redirect } from "next/navigation";
 import { logout } from "@/lib";
 import "./logout-form.scss";
@@ -7,6 +8,7 @@ import LogoutIcon from "@public/images/icons/logout.svg";
 export default async function LogoutForm() {
   return (
     <form
+      className="logout-btn"
       action={async () => {
         "use server";
         await logout();

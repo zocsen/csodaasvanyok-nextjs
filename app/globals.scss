@@ -151,6 +151,10 @@ li {
   display: none;
 }
 
+.overlay.open {
+  display: block;
+}
+
 .css-checkbox {
   position: static;
   clip: rect(1px, 1px, 1px, 1px);
