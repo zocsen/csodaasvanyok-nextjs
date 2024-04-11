@@ -18,7 +18,7 @@ import ProductList from "../ProductList/ProductList";
 import ProductFilter from "../ProductFilter/ProductFilter";
 import ProductSorter from "../ProductSorter/ProductSorter";
 
-import FilterIcon from "@public/images/icons/filter.svg";
+import FilterIcon from "public/images/icons/filter.svg";
 import Image from "next/image";
 import IsMobileContext from "@/hooks/isMobileContext";
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import LogoIcon from "@public/images/logo/logo.webp";
-import MenuIcon from "@public/images/icons/menu.svg";
+import LogoIcon from "public/images/logo/logo.webp";
+import MenuIcon from "public/images/icons/menu.svg";
 
 const MobileHeader = ({ toggleMenu }) => {
   return (

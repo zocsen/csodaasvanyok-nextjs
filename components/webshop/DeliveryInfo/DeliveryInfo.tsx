@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, use, useEffect, useState } from "react";
 import "./delivery-info.scss";
-import CloseIcon from "@public/images/icons/close.svg";
+import CloseIcon from "public/images/icons/close.svg";
 import DeliveryMethodSelector from "./DeliveryMethodSelector";
 import { useStripeContext } from "@/hooks/StripeContext";
 import { useCart } from "@/hooks/CartContext";

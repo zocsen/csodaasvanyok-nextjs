@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { logout } from "@/lib";
 import "./logout-form.scss";
 import Image from "next/image";
-import LogoutIcon from "@public/images/icons/logout.svg";
+import LogoutIcon from "public/images/icons/logout.svg";
 
 export default async function LogoutForm() {
   return (

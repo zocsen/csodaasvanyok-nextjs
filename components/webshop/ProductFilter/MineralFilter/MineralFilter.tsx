@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import "./mineral-filter.scss";
-import ExpandMoreIcon from "@public/images/icons/expand-more.svg";
+import ExpandMoreIcon from "public/images/icons/expand-more.svg";
 import { MineralFilterProps } from "@/types/filter";
 import Image from "next/image";
 

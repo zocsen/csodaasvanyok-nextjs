@@ -1,10 +1,6 @@
 import "./homepage.scss";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
-import HomepageBracelets from "@public/images/homepage-bracelets.webp";
-import HomepageMinerals from "@public/images/homepage-minerals.webp";
-import HomepageWinter from "@public/images/homepage-winter.webp";
-import HomepageLove from "@public/images/homepage-love.webp";
 
 export const runtime = "edge";
 
@@ -20,7 +16,7 @@ const IMAGE_WIDTH = 500;
 const IMAGE_HEIGHT = 500;
 
 type ImageProps = {
-  src: StaticImageData;
+  src: string;
   alt: string;
   name: string;
   link: string;
@@ -32,25 +28,25 @@ type ImageLinkProps = {
 
 const images: ImageProps[] = [
   {
-    src: HomepageBracelets,
+    src: "/images/homepage-bracelets.webp",
     alt: "Bracelets Showcase",
     name: "Karkötők",
     link: "/termekek/osszes-karkoto",
   },
   {
-    src: HomepageMinerals,
+    src: "/images/homepage-minerals.webp",
     alt: "Minerals Showcase",
     name: "Marokkövek",
     link: "/termekek/marokkovek",
   },
   {
-    src: HomepageWinter,
+    src: "/images/homepage-winter.webp",
     alt: "Winter Bracelets Showcase",
     name: "Téli varázs",
     link: "/termekek/tel",
   },
   {
-    src: HomepageLove,
+    src: "/images/homepage-love.webp",
     alt: "Love Showcase",
     name: "Szerelem",
     link: "/termekek/szerelem",
@@ -66,7 +62,7 @@ const ImageLink = ({ image }: ImageLinkProps) => (
       width={IMAGE_WIDTH}
       height={IMAGE_HEIGHT}
       priority={true}
-      placeholder="blur"
+      // placeholder="blur"
       quality={75}
     />
     <h2 className="collection-name">{image.name}</h2>

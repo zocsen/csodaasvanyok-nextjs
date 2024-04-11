@@ -1,13 +1,4 @@
 import "./footer.scss";
-import FacebookLogo from "@public/images/icons/logo-facebook.svg";
-import InstagramLogo from "@public/images/icons/logo-instagram.svg";
-import TiktokLogo from "@public/images/icons/logo-tiktok.svg";
-
-import MasterCard from "@public/images/icons/payments/MasterCard.png";
-import Visa from "@public/images/icons/payments/Visa.png";
-import ApplePay from "@public/images/icons/payments/ApplePay.png";
-import GooglePay from "@public/images/icons/payments/GooglePay.png";
-import StripePay from "@public/images/icons/payments/StripePay.png";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -65,7 +56,7 @@ export default function Footer() {
             <div className="contact-icons">
               <a href="https://www.facebook.com/csodaasvanyok">
                 <Image
-                  src={FacebookLogo}
+                  src={"/images/icons/logo-facebook.svg"}
                   alt="Facebook"
                   height={24}
                   width={24}
@@ -73,14 +64,19 @@ export default function Footer() {
               </a>
               <a href="https://www.instagram.com/csodaasvanyok">
                 <Image
-                  src={InstagramLogo}
+                  src={"/images/icons/logo-instagram.svg"}
                   alt="Instagram"
                   height={24}
                   width={24}
                 />
               </a>
-              {/* <a href="https://www.tikhrefk.com/csodaasvanyok">
-                <TikhrefkLogo width={24} />
+              {/* <a href="https://www.tiktok.com/csodaasvanyok">
+                <Image
+                  src={"/images/icons/logo-tiktok.svg"}
+                  alt="TikTok"
+                  height={24}
+                  width={24}
+                />
               </a> */}
             </div>
           </div>
@@ -92,19 +88,44 @@ export default function Footer() {
           </p>
           <ul className="payment-options">
             <li>
-              <Image src={MasterCard} alt="MasterCard" />
+              <Image
+                src={"/images/icons/payments/MasterCard.png"}
+                alt="MasterCard"
+                width={35}
+                height={24}
+              />
             </li>
             <li>
-              <Image src={Visa} alt="Visa" />
+              <Image
+                src={"/images/icons/payments/Visa.png"}
+                alt="Visa"
+                width={35}
+                height={24}
+              />
             </li>
             <li>
-              <Image src={ApplePay} alt="ApplePay" />
+              <Image
+                src={"/images/icons/payments/ApplePay.png"}
+                alt="ApplePay"
+                width={35}
+                height={24}
+              />
             </li>
             <li>
-              <Image src={GooglePay} alt="GooglePay" />
+              <Image
+                src={"/images/icons/payments/GooglePay.png"}
+                alt="GooglePay"
+                width={35}
+                height={24}
+              />
             </li>
             <li>
-              <Image src={StripePay} alt="StripePay" />
+              <Image
+                src={"/images/icons/payments/StripePay.png"}
+                alt="StripePay"
+                width={35}
+                height={24}
+              />
             </li>
           </ul>
         </div>

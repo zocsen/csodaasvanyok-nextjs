@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import DashboardIcon from "@public/images/icons/dashboard.svg";
-import ProductsIcon from "@public/images/icons/products.svg";
-import CategoriesIcon from "@public/images/icons/categories.svg";
-import MineralsIcon from "@public/images/icons/minerals.svg";
-import BenefitsIcon from "@public/images/icons/benefits.svg";
-import UsersIcon from "@public/images/icons/users.svg";
-import OrdersIcon from "@public/images/icons/orders.svg";
+import DashboardIcon from "public/images/icons/dashboard.svg";
+import ProductsIcon from "public/images/icons/products.svg";
+import CategoriesIcon from "public/images/icons/categories.svg";
+import MineralsIcon from "public/images/icons/minerals.svg";
+import BenefitsIcon from "public/images/icons/benefits.svg";
+import UsersIcon from "public/images/icons/users.svg";
+import OrdersIcon from "public/images/icons/orders.svg";
 import Link from "next/link";
 
 export default function SidebarProps({ toggleMenu }) {

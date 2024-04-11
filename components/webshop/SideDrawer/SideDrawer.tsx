@@ -1,6 +1,6 @@
 import "./side-drawer.scss";
 
-import CloseIcon from "@public/images/icons/close.svg";
+import CloseIcon from "public/images/icons/close.svg";
 import Image from "next/image";
 
 interface SideDrawerProps {

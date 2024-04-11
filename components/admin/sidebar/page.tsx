@@ -4,7 +4,7 @@ import SidebarProps from "./SidebarProps";
 import "./sidebar.scss";
 
 import Image from "next/image";
-import LogoIcon from "@public/images/logo/logo.webp";
+import LogoIcon from "public/images/logo/logo.webp";
 import MobileHeader from "../MobileHeader/MobileHeader";
 
 const SideBar = () => {
