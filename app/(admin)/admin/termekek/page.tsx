@@ -1,4 +1,4 @@
-import BasicTable from "@/components/admin/Table/SortTable";
+import ProductsTable from "@/components/admin/Tables/ProductsTable";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -15,9 +15,9 @@ async function getAllProducts() {
   return data;
 }
 
-async function DashboardPage() {
+async function ProductsPage() {
   const fetchedProducts = await getAllProducts();
-  return <BasicTable fetchedData={fetchedProducts} />;
+  return <ProductsTable fetchedData={fetchedProducts} />;
 }
 
-export default DashboardPage;
+export default ProductsPage;

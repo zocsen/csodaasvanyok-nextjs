@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Lora } from "next/font/google";
-import "../../globals.scss";
+import { Inter as FontSans } from "next/font/google";
+// import "../../globals.scss";
+import "../../globals.css";
 import "./admin.scss";
 import SideBar from "@/components/admin/sidebar/page";
 import LogoutForm from "@/components/shared/Auth/LogoutForm/LogoutForm";
+
+import { cn } from "@/lib/utils";
+import { Sidebar } from "@/components/admin/sidebar/Sidebar";
 
 export const metadata: Metadata = {
   title: "Admin - Csodaásványok",
@@ -11,15 +15,15 @@ export const metadata: Metadata = {
     "Csodaásványok webárúház, eredeti ásvány karkötők, nyakláncok, fülbevalók",
 };
 
-const inter = Inter({
-  subsets: ["latin-ext"],
-  variable: "--primary-font-family",
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
 });
 
-const lora = Lora({
-  subsets: ["latin-ext"],
-  variable: "--secondary-font-family",
-});
+// const lora = Lora({
+//   subsets: ["latin-ext"],
+//   variable: "--secondary-font-family",
+// });
 
 export default function RootLayout({
   children,
@@ -27,15 +31,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="hu" className={`${inter.variable} ${lora.variable}`}>
-      <body className="App">
+    <html lang="hu">
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+      >
         <div className="admin-page-container">
           <div>
-            <SideBar />
-            <LogoutForm />
+            <Sidebar>{children}</Sidebar>
+            {/* <LogoutForm /> */}
           </div>
-
-          <main className="admin-main">{children}</main>
         </div>
       </body>
     </html>
