@@ -48,7 +48,7 @@ type SidebarProps = {
   children: ReactNode;
 };
 
-export function Sidebar({ LogoutComp, children }: SidebarProps) {
+export default function Sidebar({ LogoutComp, children }: SidebarProps) {
   const pathname = usePathname();
 
   const CompanyName = "Csodaásványok";
