@@ -6,7 +6,6 @@ import {
   Home,
   LineChart,
   Package,
-  Package2,
   PanelLeft,
   Search,
   Settings,
@@ -42,13 +41,19 @@ import {
 
 import Logo from "@/public/images/logo/favicon.ico";
 import { usePathname } from "next/navigation";
+import { ReactNode } from "react";
 
-export function Sidebar({ children }) {
+type SidebarProps = {
+  LogoutComp: ReactNode;
+  children: ReactNode;
+};
+
+export function Sidebar({ LogoutComp, children }: SidebarProps) {
   const pathname = usePathname();
 
   const CompanyName = "Csodaásványok";
 
-  const isActive = (route) => {
+  const isActive = (route: string) => {
     return pathname === route;
   };
 
@@ -248,7 +253,7 @@ export function Sidebar({ children }) {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem>{LogoutComp}</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>

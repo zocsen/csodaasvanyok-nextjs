@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-// import "../../globals.scss";
 import "../../globals.css";
-import "./admin.scss";
-import SideBar from "@/components/admin/sidebar/page";
 import LogoutForm from "@/components/shared/Auth/LogoutForm/LogoutForm";
 
 import { cn } from "@/lib/utils";
-import { Sidebar } from "@/components/admin/sidebar/Sidebar";
+import { Sidebar } from "@/components/admin/Sidebar/Sidebar";
 
 export const metadata: Metadata = {
   title: "Admin - Csodaásványok",
@@ -19,11 +16,6 @@ const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
-
-// const lora = Lora({
-//   subsets: ["latin-ext"],
-//   variable: "--secondary-font-family",
-// });
 
 export default function RootLayout({
   children,
@@ -40,8 +32,7 @@ export default function RootLayout({
       >
         <div className="admin-page-container">
           <div>
-            <Sidebar>{children}</Sidebar>
-            {/* <LogoutForm /> */}
+            <Sidebar LogoutComp={<LogoutForm />}>{children}</Sidebar>
           </div>
         </div>
       </body>

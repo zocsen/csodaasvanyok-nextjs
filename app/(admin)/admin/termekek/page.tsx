@@ -17,7 +17,7 @@ async function getAllProducts() {
 
 async function ProductsPage() {
   const fetchedProducts = await getAllProducts();
-  return <ProductsTable fetchedData={fetchedProducts} />;
+  return <ProductsTable fetchedProducts={fetchedProducts} />;
 }
 
 export default ProductsPage;

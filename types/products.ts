@@ -26,7 +26,7 @@ export interface Product {
   mineral: Mineral[] | null;
   subcategory: string[];
   color: { code: string }[];
-  dateCreated?: Date;
+  dateCreated?: string;
   id?: string;
 }
 
@@ -37,6 +37,10 @@ export type ProductsHandlerProps = {
 
 export type ProductListProps = {
   products: Product[];
+};
+
+export type ProductsTableProps = {
+  fetchedProducts: Product[];
 };
 
 export interface ProductContextType {
