@@ -113,7 +113,7 @@ const ProductsTable = ({ fetchedProducts }: ProductsTableProps) => {
                             <Image
                               src={product.image}
                               alt="profile"
-                              objectFit="cover"
+                              style={{ objectFit: "cover" }}
                               fill
                               className="w-full h-full top-0 left-0 object-cover rounded-2xl"
                             />
