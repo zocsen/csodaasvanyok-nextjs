@@ -75,10 +75,30 @@ const DesktopAccordion = () => {
             <ul className="desktop-menu-items">
               <h2>Népszerűek 🔥</h2>
               <li>
-                <Link onClick={handleClose} href="/termekek/tel">
-                  Téli varázs ❄️
+                <Link onClick={handleClose} href="/termekek/ujdonsag">
+                  Újdonságok 🎉
                 </Link>
               </li>
+              {/* <li>
+                <Link onClick={handleClose} href="/termekek/tel">
+                  Tél ❄️
+                </Link>
+              </li> */}
+              <li>
+                <Link onClick={handleClose} href="/termekek/tavasz">
+                  Tavasz 🌸
+                </Link>
+              </li>
+              <li>
+                <Link onClick={handleClose} href="/termekek/nyar">
+                  Nyár ☀️
+                </Link>
+              </li>
+              {/* <li>
+                <Link onClick={handleClose} href="/termekek/osz">
+                  Ősz 🍂
+                </Link>
+              </li> */}
               <li>
                 <Link onClick={handleClose} href="/termekek/szerelem">
                   Szerelmeseknek 💖

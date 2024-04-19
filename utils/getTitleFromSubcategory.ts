@@ -14,8 +14,16 @@ export function getTitleFromSubcategories(
         return "Páros karkötők ";
       case "Natural":
         return "Natural karkötők ";
+      case "Újdonság":
+        return "Újdonságok 🎉 ";
+      case "Tavasz":
+        return "Tavasz 🌸 ";
+      case "Nyár":
+        return "Nyár ☀️ ";
+      case "Ősz":
+        return "Ősz 🍂";
       case "Tél":
-        return "Téli varázs ❄️ ";
+        return "Tél ❄️ ";
       case "Szerelem":
         return "Szerelmeseknek 💖 ";
       case "Horoszkóp":

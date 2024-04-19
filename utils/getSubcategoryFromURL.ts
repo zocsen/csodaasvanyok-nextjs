@@ -12,8 +12,16 @@ export default function getSubcategoryFromURL(pathname: string) {
       return "Páros";
     case "natural-karkotok":
       return "Natural";
+    case "tavasz":
+      return "Tavasz";
+    case "nyar":
+      return "Nyár";
+    case "osz":
+      return "Ősz";
     case "tel":
       return "Tél";
+    case "ujdonsag":
+      return "Újdonság";
     case "szerelem":
       return "Szerelem";
     case "horoszkop":
