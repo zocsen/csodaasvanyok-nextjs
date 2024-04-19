@@ -1,4 +1,4 @@
-import ProductsTable from "@/components/admin/Tables/ProductsTable";
+import ProductsTable from "@/components/admin/tables/ProductsTable";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 

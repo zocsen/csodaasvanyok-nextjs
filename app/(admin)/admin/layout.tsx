@@ -4,7 +4,7 @@ import "../../globals.css";
 import LogoutForm from "@/components/shared/Auth/LogoutForm/LogoutForm";
 
 import { cn } from "@/lib/utils";
-import Sidebar from "@/components/admin/Sidebar/Sidebar";
+import Sidebar from "@/components/admin/sidebar/Sidebar";
 
 export const metadata: Metadata = {
   title: "Admin - Csodaásványok",
