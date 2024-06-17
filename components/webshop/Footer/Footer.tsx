@@ -61,7 +61,7 @@ export default function Footer() {
           </div>
           <div className="footer-contact">
             <h2>Elérhetőségeink</h2>
-            <p className="email">info@csodaasvanyok.hu</p>
+            <p className="email">csodaasvanyok@gmail.com</p>
             <div className="contact-icons">
               <a href="https://www.facebook.com/csodaasvanyok">
                 <Image
